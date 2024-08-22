@@ -31,3 +31,12 @@ body {
     text-wrap: balance;
   }
 }
+@layer components {
+  .navBtn {
+    @apply relative py-3 hover:before:content-[''] hover:before:w-2 hover:before:h-2 hover:before:bg-yellow-500
+    hover:before:absolute hover:before:bottom-0 hover:before:left-[50%] hover:before:-translate-x-[50%] hover:before:rounded-full;
+  }
+  .subtext{
+    @apply text-sm text-gray-400;
+  }
+}
