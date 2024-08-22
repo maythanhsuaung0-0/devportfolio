@@ -7,7 +7,7 @@ const Navbar = ({toggleMenu}) => {
   return (
     <div className="bg-[#333646]">
       <div className="grid grid-cols-[80%,auto] lg:grid-cols-[60%,40%] w-[85%] lg:w-[70%] m-auto py-10">
-        <div className="fw-bold uppercase">Maycodes</div>
+        <div className=" font-bold uppercase">Maycodes</div>
         <div  className="grid">
           <ul className="list-none lg:flex lg:flex-row justify-between hidden">
             <li className="">

@@ -15,6 +15,10 @@ import { BiLogoTailwindCss } from "react-icons/bi";
 import { SiMysql } from "react-icons/si";
 import BlogToggle from "@/components/BlogToggle";
 import { IoCloseOutline } from "react-icons/io5";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import SimpleSlider from "@/components/Slider";
+
 export default function Home() {
   const [showMenu, setShowMenu] = React.useState(false);
   const toggleMenu = () => {
@@ -158,9 +162,11 @@ export default function Home() {
       <section className="bg-[#333646] py-[5em]">
         <div className="w-[80%] lg:w-[70%] mx-auto relative">
           <div className="lg:absolute lg:-top-44 lg:left-[50%] lg:transform lg:-translate-x-[50%]">
-            <div className="flex flex-col lg:flex-row gap-10">
+            {/* <div className="flex flex-col lg:flex-row gap-10"> */}
+            <div className=" m-auto w-full lg:w-[800px]">
               {" "}
-              <div className="p-5 w-52 h-52 self-center hover:bg-yellow-500 cursor-pointer bg-[#434657] flex">
+              <SimpleSlider/>
+              {/* <div className="p-5 w-52 h-52 self-center hover:bg-yellow-500 cursor-pointer bg-[#434657] flex">
                 <div className="flex flex-row gap-1 mt-auto">
                   <div className="text-lg mt-1">
                     <AiOutlineAntDesign />
@@ -192,7 +198,7 @@ export default function Home() {
                     <span className="text-xs">100 projects</span>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="lg:pt-[7em] py-[5em] lg:py-[7em] grid gap-[3em]">

@@ -33,8 +33,27 @@ body {
 }
 @layer components {
   .navBtn {
-    @apply relative py-3 hover:before:content-[''] hover:before:w-2 hover:before:h-2 hover:before:bg-yellow-500
-    hover:before:absolute hover:before:bottom-0 hover:before:left-[50%] hover:before:-translate-x-[50%] hover:before:rounded-full;
+    @apply text-[rgba(255,255,255,0.7)] relative py-3 ;
+    &::before{
+      content: '';
+      background-color: transparent;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      width:8px;
+      height:8px;
+      background-color:#eab308 ;
+      transition: opacity 0.3s ease-in-out;
+      opacity: 0;
+    }
+    &:hover::before{
+      opacity: 1;
+    }
+    &:hover{
+      @apply text-white
+    }
   }
   .subtext{
     @apply text-sm text-gray-400;
