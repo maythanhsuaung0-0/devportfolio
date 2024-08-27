@@ -11,7 +11,7 @@ const BlogToggle = () => {
         </span>
         <span>Blog</span>
       </div>
-      <div className='lg:self-center text-sm lg:text-base'>
+      <div className='lg:self-center text-sm lg:text-base text-white'>
         <div>Javascript beginner guide</div>
       </div>
       <div className='lg:self-center'>

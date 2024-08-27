@@ -57,12 +57,12 @@ export default function SimpleSlider() {
       <div className="w-full ">
         <div className="p-5 w-52 h-52 m-auto self-center hover:bg-yellow-500 cursor-pointer bg-[#434657] flex">
           <div className="flex flex-row gap-1 mt-auto">
-            <div className="text-lg mt-1">
+            <div className="text-lg text-white mt-1">
               <AiOutlineAntDesign />
             </div>
             <div className="grid gap-1">
-              <span className="text-lg">UI/UX designer</span>
-              <span className="text-xs">100 projects</span>
+              <span className="text-lg text-white">UI/UX designer</span>
+              <span className="text-xs text-white">100 projects</span>
             </div>
           </div>
         </div>
@@ -70,12 +70,12 @@ export default function SimpleSlider() {
       <div className="w-full ">
         <div className="p-5 w-52 h-52 self-center m-auto hover:bg-yellow-500 cursor-pointer bg-[#434657] flex">
           <div className="flex flex-row gap-1 mt-auto">
-            <div className="text-lg mt-1">
+            <div className="text-lg text-white mt-1">
               <AiOutlineAntDesign />
             </div>
             <div className="grid gap-1">
-              <span className="text-lg">UI/UX designer</span>
-              <span className="text-xs">100 projects</span>
+              <span className="text-lg text-white">UI/UX designer</span>
+              <span className="text-xs text-white">100 projects</span>
             </div>
           </div>
         </div>
@@ -83,12 +83,12 @@ export default function SimpleSlider() {
       <div className="w-full ">
         <div className="p-5 w-52 h-52 self-center m-auto hover:bg-yellow-500 cursor-pointer bg-[#434657] flex">
           <div className="flex flex-row gap-1 mt-auto">
-            <div className="text-lg mt-1">
+            <div className="text-lg text-white mt-1">
               <AiOutlineAntDesign />
             </div>
             <div className="grid gap-1">
-              <span className="text-lg">UI/UX designer</span>
-              <span className="text-xs">100 projects</span>
+              <span className="text-lg text-white">UI/UX designer</span>
+              <span className="text-xs text-white">100 projects</span>
             </div>
           </div>
         </div>
@@ -96,12 +96,12 @@ export default function SimpleSlider() {
       <div className="w-full ">
         <div className="p-5 w-52 h-52 self-center m-auto hover:bg-yellow-500 cursor-pointer bg-[#434657] flex">
           <div className="flex flex-row gap-1 mt-auto">
-            <div className="text-lg mt-1">
+            <div className="text-lg text-white mt-1">
               <AiOutlineAntDesign />
             </div>
             <div className="grid gap-1">
-              <span className="text-lg">UI/UX designer</span>
-              <span className="text-xs">100 projects</span>
+              <span className="text-lg text-white">UI/UX designer</span>
+              <span className="text-xs text-white">100 projects</span>
             </div>
           </div>
         </div>
