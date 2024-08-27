@@ -33,12 +33,12 @@ body {
 }
 @layer components {
   .navBtn {
-    @apply text-[rgba(255,255,255,0.7)] relative py-3 ;
+    @apply text-[rgba(255,255,255,0.7)] relative py-3 capitalize;
     &::before{
       content: '';
       background-color: transparent;
       position: absolute;
-      bottom: 0;
+      bottom: -6px;
       left: 50%;
       transform: translateX(-50%);
       border-radius: 50%;
@@ -57,5 +57,17 @@ body {
   }
   .subtext{
     @apply text-sm text-gray-400;
+  }
+  .codeLi,.bookLi{
+    @apply inline-block px-7 bg-no-repeat bg-[0px_4px] leading-6
+    list-none
+    mr-3;
+  }
+  .codeLi{
+    @apply bg-[url('/code.png')] bg-[length:1.2em] ;
+    
+  }
+  .bookLi{
+    @apply bg-[url('/book.png')] bg-[length:1em];
   }
 }
