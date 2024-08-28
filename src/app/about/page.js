@@ -83,7 +83,7 @@ const ResumePage = () => {
                     </h4>
                     <ul className="grid gap-2 text-sm">
                       {item.responsibilities.map((i, key) => (
-                        <li key={key} className="codeLi font-light">
+                        <li key={key} className="codeLi font-light text-white">
                           {i}
                         </li>
                       ))}
@@ -116,17 +116,17 @@ const ResumePage = () => {
                       <li className="bookLi">
                         {" "}
                         Prominent CourseWork
-                        <p className="pt-2 font-light">{item.courseWork}</p>
+                        <p className="pt-2 font-light text-white">{item.courseWork}</p>
                       </li>
                       <li className="bookLi">
                         {" "}
                         CCAs
-                        <p className="pt-2 font-light">{item.cca}</p>
+                        <p className="pt-2 font-light text-white">{item.cca}</p>
                       </li>
                       <li className="bookLi">
                         {" "}
                         CGPA
-                        <p className="pt-2 font-light">{item.cgpa}</p>
+                        <p className="pt-2 font-light text-white">{item.cgpa}</p>
                       </li>
                     </ul>
                   </div>
