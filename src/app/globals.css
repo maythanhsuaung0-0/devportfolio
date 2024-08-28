@@ -60,7 +60,7 @@ body {
   }
   .codeLi,.bookLi{
     @apply inline-block px-7 bg-no-repeat bg-[0px_4px] leading-6
-    list-none
+    list-none text-white
     mr-3;
   }
   .codeLi{
