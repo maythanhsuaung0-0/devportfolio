@@ -1,0 +1,45 @@
+{
+    "education": [
+        {
+            "year": "2023-2025",
+            "degree": "Diploma in",
+            "school": "Nanygang Polytechnic, Singapore",
+            "major": "Information Technology",
+            "courseWork": "Data Structures and Algorithms, Advanced Programming, Fullstack Development, Database Management, Software Engineering",
+            "cca": " Active Member of SIT club, Member of Ladies In Tech,Member of Community Service Club",
+            "cgpa": "3.88/4 (Director's Honor List)"
+        },
+        {
+            "year": "2018 - 2021",
+            "degree": "Bachelor of",
+            "school": " Technological University Mandalay, Myanmar.",
+            "major": "Engineering and Information Technology",
+            "courseWork": "Data Sructures and Algorithms, Networking Fundamentals,Programming Fundamentals, Computing Fundamentals",
+            "cca":"Member of music club, Secretary of Future Youth Association",
+            "cgpa": "3.5/4"
+        }
+    ],
+    "experience": [
+        {
+            "year": "2020-2022",
+            "role": "Junior Frontend Developer",
+            "company": "Nawphire, Mandalay, Myanmar",
+            "responsibilities": [
+                "Created admin panel dashboards and user-side web applications utilizing Next.js, React.js, JavaScript, Node.js, Material UI, and Tailwind CSS",
+                " Collaborated closely with UI/UX designers, backend developers, and database teams to craft robust web applications.",
+                " Designed various pages using Figma to align with project requirements.",
+                "Conducted thorough code reviews and implemented best practices, enhancing code maintainability, reusability, and reducing bugs by 30%."
+            ]
+        },
+        {
+            "year": "2019-2020",
+            "role": "Intern Frontend Developer",
+            "company": "THtwin Innovation Lab, Mandalay, Myanmar",
+            "responsibilities": [
+                "Developed client-side web applications using React.js,JavaScript, HTML, CSS, and Bootstrap",
+                "Collaborated closely with UI/UX designers to transform their designs into functional, responsive websites. ",
+                "Committed extensive hours to ensure timely project delivery, working diligently day and night."
+            ]
+        }
+    ]
+}
