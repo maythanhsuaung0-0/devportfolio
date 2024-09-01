@@ -32,12 +32,14 @@ function PrvArrow(props) {
   );
 }
 
-export default function SimpleSlider() {
+export default function SimpleSlider({children,size}) {
+  console.log(size=="sm")
   var settings = {
     dots: true,
-    infinite: false,
+    infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: size == "sm" ? 3 : 1,
+    fade:size == "sm" ? false : true,
     slidesToScroll: 1,
     nextArrow: <NxtArrow />,
     prevArrow: <PrvArrow />,
@@ -54,58 +56,7 @@ export default function SimpleSlider() {
   };
   return (
     <Slider {...settings}>
-      <div className="w-full ">
-        <div className="p-5 w-52 h-52 m-auto self-center hover:bg-yellow-500 cursor-pointer bg-[#434657] flex">
-          <div className="flex flex-row gap-1 mt-auto">
-            <div className="text-lg text-white mt-1">
-              <AiOutlineAntDesign />
-            </div>
-            <div className="grid gap-1">
-              <span className="text-lg text-white">UI/UX designer</span>
-              <span className="text-xs text-white">100 projects</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="w-full ">
-        <div className="p-5 w-52 h-52 self-center m-auto hover:bg-yellow-500 cursor-pointer bg-[#434657] flex">
-          <div className="flex flex-row gap-1 mt-auto">
-            <div className="text-lg text-white mt-1">
-              <AiOutlineAntDesign />
-            </div>
-            <div className="grid gap-1">
-              <span className="text-lg text-white">UI/UX designer</span>
-              <span className="text-xs text-white">100 projects</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="w-full ">
-        <div className="p-5 w-52 h-52 self-center m-auto hover:bg-yellow-500 cursor-pointer bg-[#434657] flex">
-          <div className="flex flex-row gap-1 mt-auto">
-            <div className="text-lg text-white mt-1">
-              <AiOutlineAntDesign />
-            </div>
-            <div className="grid gap-1">
-              <span className="text-lg text-white">UI/UX designer</span>
-              <span className="text-xs text-white">100 projects</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="w-full ">
-        <div className="p-5 w-52 h-52 self-center m-auto hover:bg-yellow-500 cursor-pointer bg-[#434657] flex">
-          <div className="flex flex-row gap-1 mt-auto">
-            <div className="text-lg text-white mt-1">
-              <AiOutlineAntDesign />
-            </div>
-            <div className="grid gap-1">
-              <span className="text-lg text-white">UI/UX designer</span>
-              <span className="text-xs text-white">100 projects</span>
-            </div>
-          </div>
-        </div>
-      </div>
+     {children}
     </Slider>
   );
 }

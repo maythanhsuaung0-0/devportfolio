@@ -1,6 +1,7 @@
 "use client";
-import React,{useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { AiOutlineAntDesign } from "react-icons/ai";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import { IoLogoInstagram } from "react-icons/io5";
@@ -21,9 +22,9 @@ import MobileNav from "@/components/MobileNav";
 import Tooltip from "@/components/Tooltip";
 
 export default function Home() {
-  const [showMenu, setShowMenu] = useState(false);
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
+  const [showMenu, setShowMenu] = useState(false);
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
@@ -33,15 +34,16 @@ export default function Home() {
       setY(window.scrollY);
     });
     console.log(x, y);
-  },[y])
+  }, [y]);
   return (
     <main className="relative scroll-smooth">
-    {showMenu ? (
-          <MobileNav toggleMenu={toggleMenu} />
-        ):<Navbar toggleMenu={toggleMenu} />}
-        
+      {showMenu ? (
+        <MobileNav toggleMenu={toggleMenu} />
+      ) : (
+        <Navbar toggleMenu={toggleMenu} />
+      )}
+
       <section id="top" className=" bg-[#333646] relative">
-        
         <section className="grid gap-[5em] lg:gap-0 lg:grid-cols-[60%,40%] w-[80%] lg:w-[70%] m-auto pt-[10em] pb-[5em]">
           <div className="flex flex-col gap-[3em] lg:gap-[7em] justify-between">
             <h1
@@ -103,9 +105,9 @@ export default function Home() {
               </div>
               <h4 className="text-3xl font-bold text-white">Education</h4>{" "}
               <p className=" subtext w-full text-white">
-              As a dedicated student, I earned a place on the Director's List throughout my years at polytechnic in Singapore...
+                As a dedicated student, I earned a place on the Director's List
+                throughout my years at polytechnic in Singapore...
               </p>
-              
               <a className=" text-yellow-500 cursor-pointer font-bold">
                 See My Resume
               </a>
@@ -113,15 +115,19 @@ export default function Home() {
           </div>
           <div className="w-full">
             <div className="flex flex-col gap-[2em]">
-            <h4 className="text-3xl font-bold text-white">
-                Work experience
-              </h4>
+              <h4 className="text-3xl font-bold text-white">Work experience</h4>
               <p className=" subtext text-white">
-              I spent a year as an intern at THtwin Innovation Lab before diving into two years as a full-time junior frontend developer at Nawphire. During this time, I gained invaluable experience working on real-world projects ....</p>
+                I spent a year as an intern at THtwin Innovation Lab before
+                diving into two years as a full-time junior frontend developer
+                at Nawphire. During this time, I gained invaluable experience
+                working on real-world projects ....
+              </p>
               <div className="flex flex-row gap-10">
                 <div className="flex flex-row gap-3 ">
                   <span className="text-5xl text-yellow-500">3</span>
-                  <span className="self-center italic text-sm text-white">years of experience as Frontend Developer</span>
+                  <span className="self-center italic text-sm text-white">
+                    years of experience as Frontend Developer
+                  </span>
                 </div>
               </div>
             </div>
@@ -135,57 +141,112 @@ export default function Home() {
             {/* <div className="flex flex-col lg:flex-row gap-10"> */}
             <div className=" m-auto w-full lg:w-[800px]">
               {" "}
-              <SimpleSlider/>
-              
+              <SimpleSlider size={"sm"}>
+                <div className="w-full ">
+                  <div className="p-5 w-52 h-52 m-auto self-center hover:bg-yellow-500 cursor-pointer bg-[#434657] flex">
+                    <div className="flex flex-row gap-1 mt-auto">
+                      <div className="text-lg text-white mt-1">
+                        <AiOutlineAntDesign />
+                      </div>
+                      <div className="grid gap-1">
+                        <span className="text-lg text-white">
+                          UI/UX designer
+                        </span>
+                        <span className="text-xs text-white">100 projects</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="w-full ">
+                  <div className="p-5 w-52 h-52 self-center m-auto hover:bg-yellow-500 cursor-pointer bg-[#434657] flex">
+                    <div className="flex flex-row gap-1 mt-auto">
+                      <div className="text-lg text-white mt-1">
+                        <AiOutlineAntDesign />
+                      </div>
+                      <div className="grid gap-1">
+                        <span className="text-lg text-white">
+                          UI/UX designer
+                        </span>
+                        <span className="text-xs text-white">100 projects</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="w-full ">
+                  <div className="p-5 w-52 h-52 self-center m-auto hover:bg-yellow-500 cursor-pointer bg-[#434657] flex">
+                    <div className="flex flex-row gap-1 mt-auto">
+                      <div className="text-lg text-white mt-1">
+                        <AiOutlineAntDesign />
+                      </div>
+                      <div className="grid gap-1">
+                        <span className="text-lg text-white">
+                          UI/UX designer
+                        </span>
+                        <span className="text-xs text-white">100 projects</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="w-full ">
+                  <div className="p-5 w-52 h-52 self-center m-auto hover:bg-yellow-500 cursor-pointer bg-[#434657] flex">
+                    <div className="flex flex-row gap-1 mt-auto">
+                      <div className="text-lg text-white mt-1">
+                        <AiOutlineAntDesign />
+                      </div>
+                      <div className="grid gap-1">
+                        <span className="text-lg text-white">
+                          UI/UX designer
+                        </span>
+                        <span className="text-xs text-white">100 projects</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </SimpleSlider>
             </div>
           </div>
           <div className="lg:pt-[7em] py-[5em] lg:py-[7em] grid gap-[3em]">
-            <h4 className="text-3xl font-bold text-center text-white">My Expertise </h4>
+            <h4 className="text-3xl font-bold text-center text-white">
+              My Expertise{" "}
+            </h4>
             <div className="flex flex-row flex-wrap text-white justify-between">
               <span className="text-6xl mb-5">
-                <Tooltip text={'figma'}>
-                  <IoLogoFigma/>
+                <Tooltip text={"figma"}>
+                  <IoLogoFigma />
                 </Tooltip>
               </span>
               <span className="text-6xl mb-5">
-                <Tooltip text={'react'}>
+                <Tooltip text={"react"}>
                   <FaReact />
                 </Tooltip>
-
               </span>
               <span className="text-6xl mb-5">
-              
-                <Tooltip text={'javascript'}>
+                <Tooltip text={"javascript"}>
                   <IoLogoJavascript />
                 </Tooltip>
               </span>
               <span className="text-6xl mb-5">
-                
-                <Tooltip text={'python'}>
+                <Tooltip text={"python"}>
                   <FaPython />
                 </Tooltip>
               </span>
               <span className="text-6xl mb-5">
-                
-                <Tooltip text={'c#'}>
+                <Tooltip text={"c#"}>
                   <TbBrandCSharp />
                 </Tooltip>
               </span>
               <span className="text-6xl mb-5">
-               
-                <Tooltip text={'css 3'}>
+                <Tooltip text={"css 3"}>
                   <IoLogoCss3 />
                 </Tooltip>
               </span>
               <span className="text-6xl mb-5">
-               
-                <Tooltip text={'tailwind css'}>
+                <Tooltip text={"tailwind css"}>
                   <BiLogoTailwindCss />
                 </Tooltip>
               </span>
               <span className="text-7xl">
-                
-                <Tooltip text={'mysql'}>
+                <Tooltip text={"mysql"}>
                   <SiMysql />
                 </Tooltip>
               </span>
@@ -280,7 +341,9 @@ export default function Home() {
             </a>
           </div>
           <div>
-            <h4 className="text-3xl font-semibold mb-[1em] text-white">What's new?</h4>
+            <h4 className="text-3xl font-semibold mb-[1em] text-white">
+              What's new?
+            </h4>
             <BlogToggle />
             <div className="bg-gray-600 h-[0.4px]" />
             <BlogToggle />
@@ -291,27 +354,33 @@ export default function Home() {
       </section>
       {/* footer */}
       <section className=" bg-[#333646] pt-[5em] pb-[8em] relative">
-       <div className="grid justify-center">
-       <div className="grid gap-5">
-          <h1 className="text-center text-white">Maycodes</h1>
-          <p className="text-center text-white">Thanks for scrolling, that's all folks.</p>
-          <ul className="flex flex-row gap-4 justify-center text-white">
-            <li>
-              <div className="text-2xl cursor-pointer">
-                <IoLogoInstagram />
-              </div>
-            </li>
-            <li>
-              <div className="text-2xl cursor-pointer">
-                <FaLinkedinIn />
-              </div>
-            </li>
-          </ul>
+        <div className="grid justify-center">
+          <div className="grid gap-5">
+            <h1 className="text-center text-white">Maycodes</h1>
+            <p className="text-center text-white">
+              Thanks for scrolling, that's all folks.
+            </p>
+            <ul className="flex flex-row gap-4 justify-center text-white">
+              <li>
+                <div className="text-2xl cursor-pointer">
+                  <IoLogoInstagram />
+                </div>
+              </li>
+              <li>
+                <div className="text-2xl cursor-pointer">
+                  <FaLinkedinIn />
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
-       </div>
-       {y>1500 &&  <div className="fixed bottom-5 lg:bottom-20 left-[80%] lg:left-[85%] w-fit bg-white text-[#333646] font-bold cursor-pointer text-2xl p-3 rounded-full">
-        <a href="#top"><GoMoveToTop /></a>
-        </div>}
+        {y > 1500 && (
+          <div className="fixed bottom-5 lg:bottom-20 left-[80%] lg:left-[85%] w-fit bg-white text-[#333646] font-bold cursor-pointer text-2xl p-3 rounded-full">
+            <a href="#top">
+              <GoMoveToTop />
+            </a>
+          </div>
+        )}
       </section>
     </main>
   );

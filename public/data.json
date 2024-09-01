@@ -15,7 +15,7 @@
             "school": " Technological University Mandalay, Myanmar.",
             "major": "Engineering and Information Technology",
             "courseWork": "Data Sructures and Algorithms, Networking Fundamentals,Programming Fundamentals, Computing Fundamentals",
-            "cca":"Member of music club, Secretary of Future Youth Association",
+            "cca": "Member of music club, Secretary of Future Youth Association",
             "cgpa": "3.5/4"
         }
     ],
@@ -41,5 +41,54 @@
                 "Committed extensive hours to ensure timely project delivery, working diligently day and night."
             ]
         }
-    ]
+    ],
+    "projects": {
+        "school": [
+            {
+                "name": "Nanyang Polytechnic, Singapore",
+                "projectName": "Eviday Community Centers' Course Platform",
+                "year": "2024",
+                "tools": ["Nodejs", "Reactjs", "Vuejs", "Material UI", "mySQL", "aws s3"],
+                "details": "I played a key role in this full-stack development project by implementing the reward management system for both customer service staff and users to redeem rewards. Throughout the project, I deepened my expertise in frontend, backend, and database management, with a focus on React.js, Node.js, and MySQL. I contributed significantly to the team by developing reusable components, streamlining development processes for my colleagues. This project was highly engaging and allowed me to optimize my overall skills while gaining valuable experience with GitHub."
+            },
+            {
+                "name": "Nanyang Polytechnic, Singapore",
+                "projectName": "Greenify Sustainable E-commerce Platform",
+                "year": "2023",
+                "tools": ["Python", "Flask", "Jinja2", "JavaScript", "AJAX", "Chart.js"],
+                "details": "I contributed to this distinction project by creating the admin and seller's analytical dashboards, the admin's page for approving the seller's application forms and seller’s updates, a CRUD page for the admin to manage the sellers, and the orders page for the sellers. This project provided me with valuable experience in Python, Flask, Jinja2, AJAX, Chart.js, and other libraries, covering both front-end and back-end development tasks. Working collaboratively on this project also enhanced my familiarity with GitHub."
+            }
+        ],
+        "work": [
+            {
+                "name": "Nawphire Company, Mandalay, Myanmar",
+                "projectName": "Pohmal Delivery Website (Admin Panel)",
+                "year": "2022",
+                "tools": ["React.js","Material UI"],
+                "details": "I played a key role in this full-stack development project by implementing the reward management system for both customer service staff and users to redeem rewards. Throughout the project, I deepened my expertise in frontend, backend, and database management, with a focus on React.js, Node.js, and MySQL. I contributed significantly to the team by developing reusable components and streamlining development processes for my colleagues. This project was highly engaging and allowed me to optimize my overall skills while gaining valuable experience with GitHub."
+            },
+            {
+                "name": "Nawphire Company, Mandalay, Myanmar",
+                "projectName": "Ngwe San Young Sugarcane Factory's Sales Management Dashboard",
+                "year": "2020",
+                "tools": ["React.js"," Material UI", "CSS"],
+                "details": "I contributed to the team by developing the sugarcane management database pages using ReactJS and Material UI. This involved close collaboration with backend and database developers to fetch and display data in the UI, as well as working with frontend developers to create and utilize shared reusable components. Utilizing Extreme Programming (XP) methodologies, I demonstrated adaptability to changes and intensive coding throughout the project."
+            },
+            {
+                "name": "Nawphire Company, Mandalay, Myanmar",
+                "projectName": "Eisan Homemade Inspiration",
+                "year": "2020",
+                "tools": ["Next.js" , "JavaScript", "TailwindCSS"],
+                "details": "I served as a frontend developer, creating web pages for users on this website. My primary contributions were to the homepage and the detail page of each recipe. This project was my first experience using TailwindCSS and Next.js, providing a valuable learning opportunity. I collaborated closely with UI/UX developers, backend developers, and the team leader to create visually appealing and user-interactive web pages."
+            },
+            {
+                "name": "THtwin Innovation Lab",
+                "projectName": "Shan Institute of Technology (Version 1)",
+                "year": "2019",
+                "tools": ["React.js", "HTML", "pure CSS", "JavaScript"],
+                "details": "During my internship, I learned ReactJS for the first time and contributed to developing the responsive about page, home page, blog page, and contact page using ReactJS and pure CSS. Working within the Extreme Programming (XP) methodology, I developed an adaptive mindset for embracing changes and enhancements. I collaborated closely with UI/UX developers, backend developers, and the team leader to create visually appealing and responsive web pages."
+            }
+            
+        ]
+    }
 }
