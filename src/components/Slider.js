@@ -23,7 +23,7 @@ function PrvArrow(props) {
   const { onClick } = props;
   return (
     <div
-    className=" text-4xl absolute top-1/2 -left-5 transform -translate-y-1/2 font-bold cursor-pointer z-20"
+    className=" text-4xl text-white absolute top-1/2 -left-5 transform -translate-y-1/2 font-bold cursor-pointer z-20"
       onClick={onClick}
     >
       {" "}

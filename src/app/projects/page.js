@@ -30,7 +30,7 @@ const ProjectsPage = () => {
       )}
 
       <section id="top" className="pt-[6em] pb-[3em] lg:pt-[8em] m-auto w-[80%] lg:w-[70%]">
-        <h1 className="font-bold">Highlighted Projects</h1>
+        <h1 className="font-bold text-white">Highlighted Projects</h1>
         <h2 className="pt-10 pb-[2em] lg:pb-10 text-[#eab308]">Work Projects</h2>
         <SimpleSlider size={'lg'}>
           {projects.work?.map((project,k) => (
