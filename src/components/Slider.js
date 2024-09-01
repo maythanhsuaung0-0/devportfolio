@@ -10,7 +10,7 @@ function NxtArrow(props) {
   const {  onClick } = props;
   return (
     <div
-    className=" text-4xl absolute top-1/2 -right-5 transform -translate-y-1/2 font-bold cursor-pointer z-20"
+    className=" text-white text-4xl absolute top-1/2 -right-5 transform -translate-y-1/2 font-bold cursor-pointer z-20"
       onClick={onClick}
     >
       {" "}

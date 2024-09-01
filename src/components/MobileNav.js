@@ -7,7 +7,7 @@ const MobileNav = ({toggleMenu}) => {
     <div className="fixed py-10  w-full h-full top-0 left-0 bg-[rgba(36,36,36,0.85)] backdrop-blur-sm z-50">
     <div className="w-[85%] m-auto grid gap-2">
       <div
-        className=" justify-self-end text-3xl cursor-pointer"
+        className=" justify-self-end text-white text-3xl cursor-pointer"
         onClick={toggleMenu}
       >
         <IoCloseOutline />
