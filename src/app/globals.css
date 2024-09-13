@@ -84,7 +84,6 @@ body {
 
   .reset-all-tailwind *{
     all: revert;
-    color: white;
   }
   .reset-all-tailwind h1{
     @apply text-5xl font-bold;
