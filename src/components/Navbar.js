@@ -3,13 +3,21 @@ import Link from "next/link";
 import React,{useState} from "react";
 import { usePathname } from "next/navigation";
 import { CgMenuLeftAlt } from "react-icons/cg";
-
-const Navbar = ({toggleMenu}) => {
+import { IoSearchOutline } from "react-icons/io5";
+import MobileNav from "./MobileNav";
+const Navbar = () => {
+  const [mobileView, setmobileView] = useState(false);
+  const toggleMenu = () => {
+    setmobileView(!mobileView);
+  };
   const pathname = usePathname();
   console.log(pathname)
   return (
-    <div className="bg-[#3336464f] fixed left-0 w-full z-50 backdrop-blur-md">
-      <div className="grid grid-cols-[80%,auto] lg:grid-cols-[60%,40%] w-[85%] lg:w-[70%] m-auto py-8">
+    <>
+    {mobileView?
+    <MobileNav toggleMenu={toggleMenu}/>
+    :<div className="bg-[#34364685] fixed top-0 left-0 w-full z-50 backdrop-blur-md border-b border-[#44465b85]">
+      <div className="grid grid-cols-[80%,auto] lg:grid-cols-[60%,40%] w-[85%] lg:w-[70%] m-auto py-5">
         <div className=" font-bold text-white capitalize">
           <Link href="/#top">May Than Hsu</Link>
         </div>
@@ -33,10 +41,10 @@ const Navbar = ({toggleMenu}) => {
             </li>
             <li>
        
-              {pathname === "/contact" ? (
-                <Link className={`navBtn before:opacity-100 text-white`} href="/contact">Contact</Link>
+              {pathname.includes("blogs") ? (
+                <Link className={`navBtn before:opacity-100 text-white`} href="/blogs">Blogs</Link>
               ):(
-                <Link className={`navBtn`} href="/contact">Contact</Link>
+                <Link className={`navBtn`} href="/blogs">Blogs</Link>
               )}
             </li>
           </ul>
@@ -44,8 +52,12 @@ const Navbar = ({toggleMenu}) => {
             <CgMenuLeftAlt/>
           </div>
         </div>
+        <div>
+
+        </div>
       </div>
-    </div>
+    </div>}
+    </>
   );
 };
 

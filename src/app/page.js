@@ -1,8 +1,6 @@
-"use client";
-import React, { useEffect, useState } from "react";
+// 'use client'
+import React from "react";
 import Link from "next/link";
-import { AiOutlineAntDesign } from "react-icons/ai";
-import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import { IoLogoInstagram } from "react-icons/io5";
 import { FaLinkedinIn } from "react-icons/fa6";
@@ -15,34 +13,16 @@ import { BiLogoTailwindCss } from "react-icons/bi";
 import { SiMysql } from "react-icons/si";
 import { GoMoveToTop } from "react-icons/go";
 import BlogToggle from "@/components/BlogToggle";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import SimpleSlider from "@/components/Slider";
 import MobileNav from "@/components/MobileNav";
 import Tooltip from "@/components/Tooltip";
+import SideNav from "@/components/SideNav";
+import getPostMetaData from "../../utils/getPostMetaData";
 
-export default function Home() {
-  const [x, setX] = useState(0);
-  const [y, setY] = useState(0);
-  const [showMenu, setShowMenu] = useState(false);
-  const toggleMenu = () => {
-    setShowMenu(!showMenu);
-  };
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
-      setX(window.scrollX);
-      setY(window.scrollY);
-    });
-    console.log(x, y);
-  }, [y]);
+export default async function Home() {
+  const data = await getPostMetaData('blogs');
   return (
-    <main className="relative scroll-smooth">
-      {showMenu ? (
-        <MobileNav toggleMenu={toggleMenu} />
-      ) : (
-        <Navbar toggleMenu={toggleMenu} />
-      )}
-
+    <main className="relative scroll-smooth bg-[#343646]">
+      <SideNav />
       <section id="top" className=" bg-[#333646] relative">
         <section className="grid gap-[5em] lg:gap-0 lg:grid-cols-[60%,40%] w-[80%] lg:w-[70%] m-auto pt-[10em] pb-[5em]">
           <div className="flex flex-col gap-[3em] lg:gap-[7em] justify-between">
@@ -93,7 +73,7 @@ export default function Home() {
         </section>
       </section>
       {/* resume */}
-      <section className=" bg-[#262734] pt-[5em] pb-[5em] lg:pb-[12em]">
+      <section className=" bg-[#262734] pt-[5em] lg:pt-[10em] pb-[5em] lg:pb-[10em]">
         <div className="flex flex-col lg:flex-row gap-[4em] lg:gap-[3em] w-[80%] lg:w-[70%] m-auto">
           <div>
             <div className="lg:h-[10em] flex flex-col gap-[2em]">
@@ -137,9 +117,9 @@ export default function Home() {
       {/* skills */}
       <section className="bg-[#333646] py-[5em]">
         <div className="w-[80%] lg:w-[70%] mx-auto relative">
-          <div className="lg:absolute lg:-top-44 lg:left-[50%] lg:transform lg:-translate-x-[50%]">
-            {/* <div className="flex flex-col lg:flex-row gap-10"> */}
-            <div className=" m-auto w-full lg:w-[800px]">
+          {/* <div className="lg:absolute lg:-top-44 lg:left-[50%] lg:transform lg:-translate-x-[50%]"> */}
+          {/* <div className="flex flex-col lg:flex-row gap-10"> */}
+          {/* <div className=" m-auto w-full lg:w-[800px]">
               {" "}
               <SimpleSlider size={"sm"}>
                 <div className="w-full ">
@@ -204,48 +184,48 @@ export default function Home() {
                 </div>
               </SimpleSlider>
             </div>
-          </div>
-          <div className="lg:pt-[7em] py-[5em] lg:py-[7em] grid gap-[3em]">
+          </div> */}
+          <div className="pb-[5em] lg:pt-0 lg:pb-[7em] grid gap-[3em]">
             <h4 className="text-3xl font-bold text-center text-white">
               My Expertise{" "}
             </h4>
-            <div className="flex flex-row flex-wrap text-white justify-between">
-              <span className="text-6xl mb-5">
+            <div className="flex flex-row flex-wrap gap-5 text-white justify-between">
+              <span className="text-6xl mb-5 hover:transform hover:rotate-12">
                 <Tooltip text={"figma"}>
                   <IoLogoFigma />
                 </Tooltip>
               </span>
-              <span className="text-6xl mb-5">
+              <span className="text-6xl mb-5 hover:transform hover:rotate-12">
                 <Tooltip text={"react"}>
                   <FaReact />
                 </Tooltip>
               </span>
-              <span className="text-6xl mb-5">
+              <span className="text-6xl mb-5 hover:transform hover:rotate-12">
                 <Tooltip text={"javascript"}>
                   <IoLogoJavascript />
                 </Tooltip>
               </span>
-              <span className="text-6xl mb-5">
+              <span className="text-6xl mb-5 hover:transform hover:rotate-12">
                 <Tooltip text={"python"}>
                   <FaPython />
                 </Tooltip>
               </span>
-              <span className="text-6xl mb-5">
+              <span className="text-6xl mb-5 hover:transform hover:rotate-12">
                 <Tooltip text={"c#"}>
                   <TbBrandCSharp />
                 </Tooltip>
               </span>
-              <span className="text-6xl mb-5">
+              <span className="text-6xl mb-5 hover:transform hover:rotate-12">
                 <Tooltip text={"css 3"}>
                   <IoLogoCss3 />
                 </Tooltip>
               </span>
-              <span className="text-6xl mb-5">
+              <span className="text-6xl mb-5 hover:transform hover:rotate-12">
                 <Tooltip text={"tailwind css"}>
                   <BiLogoTailwindCss />
                 </Tooltip>
               </span>
-              <span className="text-7xl">
+              <span className="text-7xl  hover:transform hover:rotate-12">
                 <Tooltip text={"mysql"}>
                   <SiMysql />
                 </Tooltip>
@@ -316,17 +296,17 @@ export default function Home() {
               <h4 className="text-3xl font-bold">What's new?</h4>
             </div>
             <div>
-              <BlogToggle />
-              <div className="bg-gray-600 h-[0.4px]" />
-              <BlogToggle />
-              <div className="bg-gray-600 h-[0.4px]" />
-              <BlogToggle />
+              {data.map((blg) => (
+               <Link href={`/blogs/${blg.slug}`} key={blg.slug}>
+                 <BlogToggle val={blg} />
+                </Link>
+              ))}
             </div>
           </div>
         </div>
       </section>
       {/* contact */}
-      <section className="bg-[#333646] py-[5em]">
+      {/* <section className="bg-[#333646] py-[5em]">
         <div className="w-[80%] lg:w-[70%] mx-auto gap-[3em] lg:gap-[2em] grid lg:grid-cols-[40%,auto]">
           <div className="lg:h-[10em] flex flex-col gap-[2em]">
             <h4 className="text-3xl font-semibold text-white">
@@ -351,7 +331,7 @@ export default function Home() {
             <BlogToggle />
           </div>
         </div>
-      </section>
+      </section> */}
       {/* footer */}
       <section className=" bg-[#333646] pt-[5em] pb-[8em] relative">
         <div className="grid justify-center">
@@ -374,13 +354,13 @@ export default function Home() {
             </ul>
           </div>
         </div>
-        {y > 1500 && (
+        {/* {y > 1500 && (
           <div className="fixed bottom-5 lg:bottom-20 left-[80%] lg:left-[85%] w-fit bg-white text-[#333646] font-bold cursor-pointer text-2xl p-3 rounded-full">
             <a href="#top">
               <GoMoveToTop />
             </a>
           </div>
-        )}
+        )} */}
       </section>
     </main>
   );

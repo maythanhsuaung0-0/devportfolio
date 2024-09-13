@@ -1,16 +1,11 @@
 "use client";
-import MobileNav from "@/components/MobileNav";
-import Navbar from "@/components/Navbar";
+import SideNav from "@/components/SideNav";
 import SimpleSlider from "@/components/Slider";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 
 const ProjectsPage = () => {
   const [projects, setProjects] = useState([]);
-  const [showMenu, setShowMenu] = useState(false);
-  const toggleMenu = () => {
-    setShowMenu(!showMenu);
-  };
   const fetchData = async () => {
     const res = await fetch("/data.json");
     const data = await res.json();
@@ -23,15 +18,15 @@ const ProjectsPage = () => {
 
   return (
     <main className="relative scroll-smooth bg-[#333646] min-h-screen">
-      {showMenu ? (
-        <MobileNav toggleMenu={toggleMenu} />
-      ) : (
-        <Navbar toggleMenu={toggleMenu} />
-      )}
 
-      <section id="top" className="pt-[6em] pb-[3em] lg:pt-[8em] m-auto w-[80%] lg:w-[70%]">
+      <SideNav/>
+      <section id="top" className="pt-[6em] lg:pt-[8em] pb-[3em]  m-auto w-[80%] lg:w-[70%]">
+        <div className="">
         <h1 className="font-bold text-white">Highlighted Projects</h1>
-        <h2 className="pt-10 pb-[2em] lg:pb-10 text-[#eab308]">Work Projects</h2>
+        </div>
+        <div className="flex flex-col gap-[5em]">
+        <div>
+        <h2 className="pt-10 pb-[2em2 lg:pb-10 text-[#eab308]">Work Projects</h2>
         <SimpleSlider size={'lg'}>
           {projects.work?.map((project,k) => (
             <div key={k} className=" m-auto">
@@ -57,7 +52,9 @@ const ProjectsPage = () => {
           ))}
     
         </SimpleSlider>
-        <h2 className="py-[3em] pb-[2em] text-[#eab308]">School Projects</h2>
+        </div>
+       <div>
+       <h2 className="py-[3em] pb-[2em] text-[#eab308]">School Projects</h2>
         <SimpleSlider size={'lg'}>
           {projects.school?.map((project,k) => (
             <div key={k} className=" m-auto">
@@ -83,10 +80,14 @@ const ProjectsPage = () => {
           ))}
     
         </SimpleSlider>
-        <h2 className="py-[3em] pb-[2em] text-[#eab308]">My Own Projects</h2>
+       </div>
+       <div className="pb-[3em]">
+       <h2 className="py-[3em] pb-[2em] text-[#eab308]">My Own Projects</h2>
         <p className="text-white">Take a look at my projects at </p>
         <div className="p-3 border-solid border text-white rounded-md border-gray-50 w-fit my-3 cursor-pointer hover:bg-[rgba(44,44,44,0.26)]">
           <a target="_blank" href={"https://github.com/maythanhsuaung0-0"}>https://github.com/maythanhsuaung0-0</a>
+        </div>
+       </div>
         </div>
       </section>
     </main>

@@ -1,6 +1,7 @@
 "use client";
 import MobileNav from "@/components/MobileNav";
 import Navbar from "@/components/Navbar";
+import SideNav from "@/components/SideNav";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 const ResumePage = () => {
@@ -27,6 +28,7 @@ const ResumePage = () => {
       ) : (
         <Navbar toggleMenu={toggleMenu} />
       )}
+      <SideNav/>
 
       <section className=" relative">
         <section
