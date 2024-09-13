@@ -1,8 +1,10 @@
 import fs from 'fs';
+import path from 'path';
 import matter from 'gray-matter';
 
 export default function getPostMetaData(basePath) {
-    const folder = basePath + "/";
+    // const folder = basePath + "/";
+    const folder = path.join(process.cwd(),basePath+'/'); // Adjust the path if necessary
     const files = fs.readdirSync(folder); // Get all files in the folder
     const mdFiles = files.filter((fn) => fn.endsWith('.md')); // Filter only md files
     const post = mdFiles.map((fn) => {

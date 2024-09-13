@@ -85,6 +85,9 @@ body {
   .reset-all-tailwind *{
     all: revert;
   }
+  .reset-all-tailwind h1{
+    @apply text-5xl font-bold;
+  }
   .reset-all-tailwind code{
     @apply  m-auto text-wrap w-fit py-5 px-8 bg-gray-800 block rounded-md max-w-full;
   }

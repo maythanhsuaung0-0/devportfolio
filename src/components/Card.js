@@ -17,7 +17,7 @@ const Card = ({post}) => {
         <span className='text-xs text-gray-400'>{hour}{min}{sec}</span>
       </div>
       <div>
-        <h4>{post.title}</h4>
+        <h4 className='text-white'>{post.title}</h4>
       </div>
       <div>
         <span className='text-xs text-gray-400'>{post.date}</span>
