@@ -4,8 +4,8 @@ import fs from 'fs'
 import matter from 'gray-matter'
 import OnThisPage from '@/components/OnThisPage'
 import getPostMetaData from '../../../../utils/getPostMetaData'
-import {IoReturnUpBack } from 'react-icons/io5'
 import Link from 'next/link'
+import { CgArrowLeft } from 'react-icons/cg'
 
 export const getPostContent = async (slug)=>{
     const folder = "blogs/";
@@ -25,8 +25,9 @@ const BlogPage = async ({params}) => {
        
         <div>
         <Link href='/blogs'>
-        <div className='flex flex-row text-[#eab308] gap-4'>
-          <IoReturnUpBack className=' text-3xl cursor-pointer'/> <span className='self-center'>Back</span>
+        <div className='flex flex-row text-white bg-[#47495f]   hover:bg-[#555771] w-fit rounded-md px-2 py-2 gap-2 mb-4'>
+            <CgArrowLeft className='self-center'/>
+           <span className='self-center text-sm'>Back</span>
         </div>
         </Link>
            <div  className='reset-all-tailwind'>

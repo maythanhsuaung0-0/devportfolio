@@ -8,12 +8,12 @@ const BlogToggle = ({val}) => {
   const sec = ParseTime(val.readingTime.split(":")[2],'s')
   return (
     <div className='grid grid-cols-[25%,auto,5%] gap-3 py-5 px-3 cursor-pointer hover:bg-[#41435633] rounded-md'>
-      <div className='flex flex-row gap-1 lg:self-center text-xs lg:text-sm text-gray-400'>
+      <div className='flex flex-col lg:flex-row gap-1 lg:self-center text-xs lg:text-sm text-gray-400'>
         <span className='text-xs self-center'>{val.date}</span>
-        <span className='lg:self-center'>
+        <span className='lg:self-center hidden lg:block'>
             <LuDot />
         </span>
-        <span className='text-xs self-center'>
+        <span className='text-xs text-left self-center'>
         {hour}
         {min}
         {sec}

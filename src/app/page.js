@@ -15,15 +15,37 @@ import BlogToggle from "@/components/BlogToggle";
 import Tooltip from "@/components/Tooltip";
 import SideNav from "@/components/SideNav";
 import getPostMetaData from "../../utils/getPostMetaData";
+// import SimpleSlider from "@/components/Slider";
+import Card from "@/components/Card";
+import ProjectsSlides from "@/components/ProjectsSlides";
+import SimpleSlider from "@/components/Slider";
 
 export default async function Home() {
   const data = await getPostMetaData('blogs');
+  const projects = await fetch(process.env.NEXT_PUBLIC_SITE_URL + "/data.json");
+  const res = await projects.json();
+  const project = res.projects;
+  console.log(project)
+  const mainTools = []
+  project.work.map((pj)=>{
+    if(!mainTools.includes(pj.tools[0])){
+      mainTools.push(pj.tools[0])
+      console.log(pj.tools[0])
+    }
+  } )
+  project.school.map((pj)=>{
+    if(!mainTools.includes(pj.tools[0])){
+      mainTools.push(pj.tools[0])
+      console.log(pj.tools[0])
+    }
+  } )
+  console.log(mainTools)
   return (
     <main className="relative scroll-smooth bg-[#343646]">
       <SideNav />
       <section id="top" className=" bg-[#333646] relative">
         <section className="h-screen grid align-middle">
-          <div className="grid gap-[5em] lg:gap-0 lg:grid-cols-[60%,40%] w-[80%] lg:w-[70%] m-auto">
+          <div className="grid gap-[3em] lg:gap-0 lg:grid-cols-[60%,40%] w-[80%] lg:w-[70%] m-auto">
           <div className="flex flex-col gap-[3em] lg:gap-[7em] justify-between">
             <h1
               className=" font-extrabold text-white text-7xl relative before:content-[''] before:w-[2em] before:h-[1.5em]
@@ -51,7 +73,7 @@ export default async function Home() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-[2em]">
+          <div className="flex flex-col gap-5 lg:gap-[2em]">
             <div className="flex flex-row gap-1">
               <span className=" self-center text-gray-400">
                 <GoDash />
@@ -118,7 +140,7 @@ export default async function Home() {
       <section className="bg-[#333646] py-[5em]">
         <div className="w-[80%] lg:w-[70%] mx-auto relative">
          
-          <div className="pb-[5em] lg:pt-0 lg:pb-[7em] grid gap-[3em]">
+          <div className="pb-[5em] lg:pt-0 lg:pb-[7em] grid gap-[4em]">
             <h4 className="text-3xl font-bold text-center text-white">
               My Expertise{" "}
             </h4>
@@ -165,52 +187,39 @@ export default async function Home() {
               </span>
             </div>
           </div>
-          <div className="grid lg:grid-cols-2 gap-[2em] lg:gap-[6em]">
-            <div className="grid gap-[3em] lg:gap-3">
-              <div className="lg:h-[10em] flex flex-col gap-[2em]">
-                <div className="flex flex-row gap-1">
+          <div className="">
+            <div className="">
+              <div className=" flex flex-row justify-between gap-[2em]">
+               <div className="grid gap-5">
+               <div className="flex flex-row gap-1">
                   <span className=" self-center text-gray-400">
                     <GoDash />
                   </span>
                   <span className="subtext tracking-wider">Introduction</span>
                 </div>
+                
                 <h4 className="text-3xl font-bold text-white">
-                  Fullstack and frontend developer
+                  My Projects
                 </h4>
                 <p className=" subtext text-white">
-                  I am a fast-paced self-learner whose passion is Coding! I love
-                  delivering visually appealing websites to end-users.
+                  Projects I have done in the companies I worked for
                 </p>
+               
+               </div>
                 <a className=" text-yellow-500 cursor-pointer font-bold">
-                  More about me
+                  Explore More
                 </a>
               </div>
-              <div>
-                <Image
-                  src="https://i.pinimg.com/564x/ca/59/42/ca5942f341bdd354f6b2f5e7e3e64301.jpg"
-                  alt="image"
-                  width={400}
-                  height={500}
-                />
-              </div>
+            <div className="w-full m-auto mt-10">
+             <SimpleSlider size={'sm'}>
+              {project.work.map((pj,k)=>{
+                return <div key={k} className="m-auto w-[90%]"><Card data={pj}  mainTools = {mainTools}/></div>
+              })}
+               {project.school.map((pj,k)=>{
+                return <div key={k} className="m-auto w-[90%]"><Card data={pj}  mainTools = {mainTools}/></div>
+              })}
+              </SimpleSlider>
             </div>
-            <div className="grid gap-[2em] lg:gap-[6em]">
-              <div>
-                <Image
-                  src="https://i.pinimg.com/564x/ca/59/42/ca5942f341bdd354f6b2f5e7e3e64301.jpg"
-                  alt="image"
-                  width={400}
-                  height={500}
-                />
-              </div>
-              <div>
-                <Image
-                  src="https://i.pinimg.com/564x/ca/59/42/ca5942f341bdd354f6b2f5e7e3e64301.jpg"
-                  alt="image"
-                  width={400}
-                  height={500}
-                />
-              </div>
             </div>
           </div>
         </div>
@@ -238,34 +247,7 @@ export default async function Home() {
           </div>
         </div>
       </section>
-      {/* contact */}
-      {/* <section className="bg-[#333646] py-[5em]">
-        <div className="w-[80%] lg:w-[70%] mx-auto gap-[3em] lg:gap-[2em] grid lg:grid-cols-[40%,auto]">
-          <div className="lg:h-[10em] flex flex-col gap-[2em]">
-            <h4 className="text-3xl font-semibold text-white">
-              Fullstack and frontend developer
-            </h4>
-            <p className=" subtext text-white">
-              I am a fast-paced self-learner whose passion is Coding! I love
-              delivering visually appealing websites to end-users.
-            </p>
-            <a className=" text-yellow-500 cursor-pointer font-bold">
-              More about me
-            </a>
-          </div>
-          <div>
-            <h4 className="text-3xl font-semibold mb-[1em] text-white">
-              What's new?
-            </h4>
-            <BlogToggle />
-            <div className="bg-gray-600 h-[0.4px]" />
-            <BlogToggle />
-            <div className="bg-gray-600 h-[0.4px]" />
-            <BlogToggle />
-          </div>
-        </div>
-      </section> */}
-      {/* footer */}
+      
       <section className=" bg-[#333646] pt-[5em] pb-[8em] relative">
         <div className="grid justify-center">
           <div className="grid gap-5">
