@@ -1,7 +1,6 @@
-// 'use client'
+
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { IoLogoInstagram } from "react-icons/io5";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { GoDash } from "react-icons/go";
@@ -15,9 +14,7 @@ import BlogToggle from "@/components/BlogToggle";
 import Tooltip from "@/components/Tooltip";
 import SideNav from "@/components/SideNav";
 import getPostMetaData from "../../utils/getPostMetaData";
-// import SimpleSlider from "@/components/Slider";
 import Card from "@/components/Card";
-import ProjectsSlides from "@/components/ProjectsSlides";
 import SimpleSlider from "@/components/Slider";
 
 export default async function Home() {

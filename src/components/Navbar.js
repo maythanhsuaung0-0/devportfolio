@@ -3,7 +3,6 @@ import Link from "next/link";
 import React,{useState} from "react";
 import { usePathname } from "next/navigation";
 import { CgMenuLeftAlt } from "react-icons/cg";
-import { IoSearchOutline } from "react-icons/io5";
 import MobileNav from "./MobileNav";
 const Navbar = () => {
   const [mobileView, setmobileView] = useState(false);
