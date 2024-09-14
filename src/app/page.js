@@ -11,9 +11,7 @@ import { TbBrandCSharp } from "react-icons/tb";
 import { IoLogoCss3 } from "react-icons/io";
 import { BiLogoTailwindCss } from "react-icons/bi";
 import { SiMysql } from "react-icons/si";
-import { GoMoveToTop } from "react-icons/go";
 import BlogToggle from "@/components/BlogToggle";
-import MobileNav from "@/components/MobileNav";
 import Tooltip from "@/components/Tooltip";
 import SideNav from "@/components/SideNav";
 import getPostMetaData from "../../utils/getPostMetaData";
@@ -24,7 +22,8 @@ export default async function Home() {
     <main className="relative scroll-smooth bg-[#343646]">
       <SideNav />
       <section id="top" className=" bg-[#333646] relative">
-        <section className="grid gap-[5em] lg:gap-0 lg:grid-cols-[60%,40%] w-[80%] lg:w-[70%] m-auto pt-[10em] pb-[5em]">
+        <section className="h-screen grid align-middle">
+          <div className="grid gap-[5em] lg:gap-0 lg:grid-cols-[60%,40%] w-[80%] lg:w-[70%] m-auto">
           <div className="flex flex-col gap-[3em] lg:gap-[7em] justify-between">
             <h1
               className=" font-extrabold text-white text-7xl relative before:content-[''] before:w-[2em] before:h-[1.5em]
@@ -69,6 +68,7 @@ export default async function Home() {
             <a className=" text-yellow-500 cursor-pointer font-semibold">
               More about me
             </a>
+          </div>
           </div>
         </section>
       </section>
@@ -117,74 +117,7 @@ export default async function Home() {
       {/* skills */}
       <section className="bg-[#333646] py-[5em]">
         <div className="w-[80%] lg:w-[70%] mx-auto relative">
-          {/* <div className="lg:absolute lg:-top-44 lg:left-[50%] lg:transform lg:-translate-x-[50%]"> */}
-          {/* <div className="flex flex-col lg:flex-row gap-10"> */}
-          {/* <div className=" m-auto w-full lg:w-[800px]">
-              {" "}
-              <SimpleSlider size={"sm"}>
-                <div className="w-full ">
-                  <div className="p-5 w-52 h-52 m-auto self-center hover:bg-yellow-500 cursor-pointer bg-[#434657] flex">
-                    <div className="flex flex-row gap-1 mt-auto">
-                      <div className="text-lg text-white mt-1">
-                        <AiOutlineAntDesign />
-                      </div>
-                      <div className="grid gap-1">
-                        <span className="text-lg text-white">
-                          UI/UX designer
-                        </span>
-                        <span className="text-xs text-white">100 projects</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="w-full ">
-                  <div className="p-5 w-52 h-52 self-center m-auto hover:bg-yellow-500 cursor-pointer bg-[#434657] flex">
-                    <div className="flex flex-row gap-1 mt-auto">
-                      <div className="text-lg text-white mt-1">
-                        <AiOutlineAntDesign />
-                      </div>
-                      <div className="grid gap-1">
-                        <span className="text-lg text-white">
-                          UI/UX designer
-                        </span>
-                        <span className="text-xs text-white">100 projects</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="w-full ">
-                  <div className="p-5 w-52 h-52 self-center m-auto hover:bg-yellow-500 cursor-pointer bg-[#434657] flex">
-                    <div className="flex flex-row gap-1 mt-auto">
-                      <div className="text-lg text-white mt-1">
-                        <AiOutlineAntDesign />
-                      </div>
-                      <div className="grid gap-1">
-                        <span className="text-lg text-white">
-                          UI/UX designer
-                        </span>
-                        <span className="text-xs text-white">100 projects</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="w-full ">
-                  <div className="p-5 w-52 h-52 self-center m-auto hover:bg-yellow-500 cursor-pointer bg-[#434657] flex">
-                    <div className="flex flex-row gap-1 mt-auto">
-                      <div className="text-lg text-white mt-1">
-                        <AiOutlineAntDesign />
-                      </div>
-                      <div className="grid gap-1">
-                        <span className="text-lg text-white">
-                          UI/UX designer
-                        </span>
-                        <span className="text-xs text-white">100 projects</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </SimpleSlider>
-            </div>
-          </div> */}
+         
           <div className="pb-[5em] lg:pt-0 lg:pb-[7em] grid gap-[3em]">
             <h4 className="text-3xl font-bold text-center text-white">
               My Expertise{" "}
@@ -285,8 +218,8 @@ export default async function Home() {
       {/* blogs */}
       <section className="bg-[#242735] py-[5em]">
         <div className="w-[80%] lg:w-[70%] mx-auto">
-          <div className="grid lg:grid-cols-[45%,auto] gap-[2em] lg:gap-0">
-            <div className="lg:h-[10em] flex flex-col gap-[2em]">
+          <div className="grid gap-[2em]">
+            <div className=" flex flex-col gap-[2em]">
               <div className="flex flex-row gap-1">
                 <span className=" self-center text-gray-400">
                   <GoDash />

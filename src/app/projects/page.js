@@ -1,7 +1,6 @@
 "use client";
 import SideNav from "@/components/SideNav";
 import SimpleSlider from "@/components/Slider";
-import Link from "next/link";
 import React, { useState, useEffect } from "react";
 
 const ProjectsPage = () => {

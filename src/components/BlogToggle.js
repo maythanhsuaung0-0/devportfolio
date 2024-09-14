@@ -7,7 +7,7 @@ const BlogToggle = ({val}) => {
   const min = ParseTime(val.readingTime.split(":")[1],'m')
   const sec = ParseTime(val.readingTime.split(":")[2],'s')
   return (
-    <div className='grid grid-cols-[40%,auto,5%] gap-3 py-5 px-3 cursor-pointer hover:bg-[#41435633] rounded-md'>
+    <div className='grid grid-cols-[25%,auto,5%] gap-3 py-5 px-3 cursor-pointer hover:bg-[#41435633] rounded-md'>
       <div className='flex flex-row gap-1 lg:self-center text-xs lg:text-sm text-gray-400'>
         <span className='text-xs self-center'>{val.date}</span>
         <span className='lg:self-center'>

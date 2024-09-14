@@ -16,6 +16,7 @@ export const getPostContent = async (slug)=>{
 }
 
 const BlogPage = async ({params}) => {
+
     const post = await getPostContent(params.slug)
     const postMeta = await getPostMetaData("blogs")
   return (
