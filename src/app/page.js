@@ -19,7 +19,8 @@ import SimpleSlider from "@/components/Slider";
 
 export default async function Home() {
   const data = await getPostMetaData('blogs');
-  const projects = await fetch(process.env.NEXT_PUBLIC_SITE_URL + "/data.json");
+  const apiUrl = process.env.NEXT_PUBLIC_SITE_URL
+  const projects = await fetch(apiUrl + "/data.json");
   const res = await projects.json();
   const project = res.projects;
   console.log(project)

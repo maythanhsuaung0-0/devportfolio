@@ -2,7 +2,8 @@ import SideNav from "@/components/SideNav";
 import React from "react";
 
 const ResumePage = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/data.json`);
+  const apiUrl = process.env.NEXT_PUBLIC_SITE_URL
+  const res = await fetch(apiUrl + "/data.json");
   const data = await res.json();
   const experience = data?.experience;
   const education = data?.education;

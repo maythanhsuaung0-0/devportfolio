@@ -4,7 +4,8 @@ import React from "react";
 import { CgArrowLeft } from "react-icons/cg";
 
 const ProjectDetailPage = async ({ params }) => {
-  const res = await fetch(process.env.NEXT_PUBLIC_SITE_URL + "/data.json");
+  const apiUrl = process.env.NEXT_PUBLIC_SITE_URL
+  const res = await fetch(apiUrl + "/data.json");
   const data = await res.json();
   const projects = data?.projects;
   const prj =
