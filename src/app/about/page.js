@@ -1,10 +1,11 @@
 import SideNav from "@/components/SideNav";
 import React from "react";
+
 const ResumePage = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/data.json`);
   const data = await res.json();
-  const experience = data.experience;
-  const education = data.education;
+  const experience = data?.experience;
+  const education = data?.education;
   return (
     <main className="relative scroll-smooth bg-[#333646] min-h-screen">
       <SideNav />

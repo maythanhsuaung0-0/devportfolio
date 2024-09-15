@@ -6,7 +6,7 @@ import { CgArrowLeft } from "react-icons/cg";
 const ProjectDetailPage = async ({ params }) => {
   const res = await fetch(process.env.NEXT_PUBLIC_SITE_URL + "/data.json");
   const data = await res.json();
-  const projects = data.projects;
+  const projects = data?.projects;
   const prj =
     projects.work.find(
       (project) => project.projectName.split(" ").join("") === params.prj

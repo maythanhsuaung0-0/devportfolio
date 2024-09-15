@@ -6,7 +6,7 @@ import React from "react";
 const ProjectsPage = async () => {
     const res = await fetch(process.env.NEXT_PUBLIC_SITE_URL+'/data.json');
     const data = await res.json();
-    const projects = data.projects;
+    const projects = data?.projects;
     const mainTools = []
     projects.work.map((pj)=>{
       if(!mainTools.includes(pj.tools[0])){
