@@ -3,7 +3,6 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { AiOutlineAntDesign } from "react-icons/ai";
 import { TbChevronLeft } from "react-icons/tb";
 import { TbChevronRight } from "react-icons/tb";
 

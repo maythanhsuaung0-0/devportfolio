@@ -7,18 +7,17 @@ const ProjectsPage = async () => {
   const apiUrl = process.env.NEXT_PUBLIC_SITE_URL
   const res = await fetch(apiUrl + "/data.json");
     const data = await res.json();
+    console.log('res',res,data)
     const projects = data?.projects;
     const mainTools = []
     projects.work.map((pj)=>{
       if(!mainTools.includes(pj.tools[0])){
         mainTools.push(pj.tools[0])
-        console.log(pj.tools[0])
       }
     } )
     projects.school.map((pj)=>{
       if(!mainTools.includes(pj.tools[0])){
         mainTools.push(pj.tools[0])
-        console.log(pj.tools[0])
       }
     } )
   return (
