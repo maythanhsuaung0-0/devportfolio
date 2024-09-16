@@ -10,7 +10,7 @@ const Card = ({data,mainTools}) => {
     console.log(ToolColor)
   return (
     <Link href={`/projects/${data.projectName.split(' ').join('')}`}>
-    <div className='p-3 my-3 m-auto cursor-pointer rounded-md w-[90%] min-h-[11em] h-full border border-gray-50 hover:rotate-3'>
+    <div className='p-4 my-3 m-auto cursor-pointer rounded-md w-[90%] min-h-[11em] h-full bg-gradient-to-tr from-[#43465a2b] to-[#4e5169a1] hover:rotate-3'>
       <h3 className='text-lg font-bold lg:text-xl mb-3'>{data.projectName.split(' ').slice(0,5).join(' ')}{data.projectName.split(' ').length>5 && ' ...'}</h3>
       <div className='flex flex-row justify-between mb-4 text-xs text-gray-400'>
         <span>{data.name}</span>

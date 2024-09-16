@@ -16,7 +16,7 @@ const ResumePage = async () => {
           id="top"
           className=" pt-[6em] lg:pt-[8em] m-auto w-[80%] lg:w-[70%]"
         >
-          <h2 className="text-3xl font-bold mb-12 text-yellow-500">About Me</h2>
+          <h2 className="text-3xl font-bold mb-12 text-white">About Me</h2>
           <div className="grid lg:grid-cols-[auto,70%] gap-3">
             <div className="rounded-full z-20 relative bg-[url('/myID.jpg')] w-[13em] h-[13em] bg-center bg-cover "></div>
 

@@ -26,7 +26,7 @@ const ProjectsPage = async () => {
       <SideNav/>
       <section id="top" className="pt-[6em] lg:pt-[8em] pb-[3em]  m-auto w-[80%] lg:w-[70%]">
         <div className="">
-        <h2 className='text-3xl font-bold mb-10 text-yellow-500'>Highlighted Projects</h2>
+        <h2 className='text-3xl font-bold mb-10 text-[#fff]'>Highlighted Projects</h2>
         </div>
         <div className="flex flex-col gap-[5em]">
         <div>
@@ -61,3 +61,5 @@ const ProjectsPage = async () => {
 };
 
 export default ProjectsPage;
+
+

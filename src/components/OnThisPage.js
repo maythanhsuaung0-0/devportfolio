@@ -7,10 +7,10 @@ const OnThisPage = ({data}) => {
   return (
     <div className='relative w-full lg:h-full mt-20 '>
       <div className='border-l-2 border-[#44465b85] px-5 py-4 top-[2em] sticky lg:top-[7em] right-[10em]'>
-      <div className='flex flex-row gap-2 justify-between pr-10'>
+      <div className='flex flex-row gap-2 justify-between pr-10 cursor-pointer' onClick={()=>setShow(!show)}>
       <h4 className='text-[#eab308]'>On This Page</h4>
-      {show && <FaAngleUp onClick={()=>setShow(!show)} className='cursor-pointer text-[#eab308]'/>}
-      {!show && <FaAngleDown onClick={()=>setShow(!show)} className='cursor-pointer text-[#eab308]'/>}
+      {show && <FaAngleUp  className='cursor-pointer text-[#eab308]'/>}
+      {!show && <FaAngleDown className='cursor-pointer text-[#eab308]'/>}
       </div>
      {show &&  <ul className='text-white list-none pt-2'>
         {data.map((val,index) => (

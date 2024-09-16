@@ -90,7 +90,7 @@ body {
     @apply text-5xl font-bold;
   }
   .reset-all-tailwind code{
-    @apply  m-auto text-wrap w-fit py-5 px-8 bg-gray-800 block rounded-md max-w-full;
+    @apply  text-wrap w-fit py-5 px-8 bg-gray-800 block rounded-md max-w-full;
   }
   .reset-all-tailwind th, .reset-all-tailwind td{
     @apply text-left p-[6px] lg:px-5 lg:py-2 border border-gray-300 bg-[#3f4154b9] text-xs;
