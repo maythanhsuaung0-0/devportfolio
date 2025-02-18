@@ -57,8 +57,8 @@ const ResumePage = async () => {
             <h1 className="text-yellow-500">Professional Experience</h1>
           </div>
           <div className="grid gap-[3em]">
-            {experience.map((item, k) => (
-              <div key={k} className="grid lg:grid-cols-[30%,auto] gap-3">
+            {experience.map((item ) => (
+              <div key={item.id} className="grid lg:grid-cols-[30%,auto] gap-3">
                 <div className="flex flex-row gap-[3em] lg:gap-[7em] justify-between">
                   <h1 className="text-white">{item.year}</h1>
                 </div>
@@ -86,8 +86,8 @@ const ResumePage = async () => {
             <h1 className="text-yellow-500">Education</h1>
           </div>
           <div className="grid gap-[3em]">
-            {education.map((item, k) => (
-              <div key={k} className="grid lg:grid-cols-[30%,auto] gap-3">
+            {education.map((item) => (
+              <div key={item.id} className="grid lg:grid-cols-[30%,auto] gap-3">
                 <div className="flex flex-row gap-[3em] lg:gap-[7em] justify-between">
                   <h1 className="text-white">{item.year}</h1>
                 </div>

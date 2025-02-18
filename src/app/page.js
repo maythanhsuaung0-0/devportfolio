@@ -17,82 +17,86 @@ import Card from "@/components/Card";
 import SimpleSlider from "@/components/Slider";
 
 export default async function Home() {
-  const data = await getPostMetaData('blogs');
+  const data = getPostMetaData('blogs');
   const apiUrl = process.env.NEXT_PUBLIC_SITE_URL
   const projects = await fetch(apiUrl + "/data.json");
-  const res = await projects.json();
-  const project = res.projects;
-  console.log(project)
+console.log("not working",projects)
+  const res = projects.json();
+ const project = res.projects;
+console.log("well",res)
   const mainTools = []
-  project.work.map((pj)=>{
-    if(!mainTools.includes(pj.tools[0])){
-      mainTools.push(pj.tools[0])
-      console.log(pj.tools[0])
-    }
-  } )
-  project.school.map((pj)=>{
-    if(!mainTools.includes(pj.tools[0])){
-      mainTools.push(pj.tools[0])
-      console.log(pj.tools[0])
-    }
-  } )
+  if (project) {
+    project.work.map((pj) => {
+      if (!mainTools.includes(pj.tools[0])) {
+        mainTools.push(pj.tools[0])
+        console.log(pj.tools[0])
+      }
+    })
+    project.school.map((pj) => {
+      if (!mainTools.includes(pj.tools[0])) {
+        mainTools.push(pj.tools[0])
+        console.log(pj.tools[0])
+      }
+    })
+
+  }
   console.log(mainTools)
   return (
-    <main className="relative scroll-smooth bg-[#343646]">
+    <main className="relative scroll-smooth  bg-baseTheme">
       <SideNav />
-      <section id="top" className=" bg-[#333646] relative">
+      <section id="top" className=" relative">
         <section className="h-screen grid align-middle">
           <div className="grid gap-[3em] lg:gap-0 lg:grid-cols-[60%,40%] w-[80%] lg:w-[70%] m-auto">
-          <div className="flex flex-col gap-[3em] lg:gap-[7em] justify-between">
-            <h1
-              className=" font-extrabold text-white text-7xl relative before:content-[''] before:w-[2em] before:h-[1.5em]
-           before:bg-yellow-400 before:absolute before:-top-10 before:opacity-20 before:blur-[1px] before:right-54 lg:before:right-32"
-            >
-              May Than <br />
-              <span className="border-b-4 border-solid border-yellow-500 py-2">
-                H
-              </span>
-              <span className="py-2">su</span>
-            </h1>
-            <div>
-              <ul className="flex flex-row gap-4">
-                <li>
-                  <div className="text-2xl text-white cursor-pointer">
-                    <IoLogoInstagram />
-                  </div>
-                </li>
-                <li>
-                  <div className="text-2xl text-white cursor-pointer">
-                    <FaLinkedinIn />
-                  </div>
-                </li>
-              </ul>
+            <div className="flex flex-col gap-[3em] lg:gap-[7em] justify-between">
+              <h1
+                className=" font-extrabold text-white text-7xl ]
+"
+              >
+                May Than <br />
+                <span className="border-b-4 border-solid border-yellow-500 py-2">
+                  H
+                </span>
+                <span className="py-2">su</span>
+              </h1>
+              <div>
+                <ul className="flex flex-row gap-4">
+                  <li>
+                    <div className="text-2xl text-white cursor-pointer">
+                      <IoLogoInstagram />
+                    </div>
+                  </li>
+                  <li>
+                    <div className="text-2xl text-white cursor-pointer">
+                      <FaLinkedinIn />
+                    </div>
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
 
-          <div className="flex flex-col gap-5 lg:gap-[2em]">
-            <div className="flex flex-row gap-1">
-              <span className=" self-center text-gray-400">
-                <GoDash />
-              </span>
-              <span className="subtext tracking-wider">Introduction</span>
+            <div className="flex flex-col gap-5 lg:gap-[2em]">
+              <div className="flex flex-row gap-1">
+                <span className=" self-center text-gray-400">
+                  <GoDash />
+                </span>
+                <span className="subtext tracking-wider">Introduction</span>
+              </div>
+              <h4 className="text-3xl text-white font-semibold">
+                Fullstack and frontend developer
+              </h4>
+              <p className=" subtext text-white">
+                I am a fast-paced self-learner whose passion is Coding! I love
+                delivering visually appealing websites to end-users.
+              </p>
+              <a className=" text-yellow-500 cursor-pointer font-semibold">
+                More about me
+              </a>
             </div>
-            <h4 className="text-3xl text-white font-semibold">
-              Fullstack and frontend developer
-            </h4>
-            <p className=" subtext text-white">
-              I am a fast-paced self-learner whose passion is Coding! I love
-              delivering visually appealing websites to end-users.
-            </p>
-            <a className=" text-yellow-500 cursor-pointer font-semibold">
-              More about me
-            </a>
-          </div>
           </div>
         </section>
       </section>
       {/* resume */}
-      <section className=" bg-[#262734] pt-[5em] lg:pt-[10em] pb-[5em] lg:pb-[10em]">
+      <section className=" bg-baseTheme pt-[5em] lg:pt-[10em] pb-[5em] lg:pb-[10em]">
         <div className="flex flex-col lg:flex-row gap-[4em] lg:gap-[3em] w-[80%] lg:w-[70%] m-auto">
           <div>
             <div className="lg:h-[10em] flex flex-col gap-[2em]">
@@ -136,7 +140,7 @@ export default async function Home() {
       {/* skills */}
       <section className="bg-[#333646] py-[5em]">
         <div className="w-[80%] lg:w-[70%] mx-auto relative">
-         
+
           <div className="pb-[5em] lg:pt-0 lg:pb-[7em] grid gap-[4em]">
             <h4 className="text-3xl font-bold text-center text-white">
               My Expertise{" "}
@@ -184,41 +188,6 @@ export default async function Home() {
               </span>
             </div>
           </div>
-          <div className="">
-            <div className="">
-              <div className=" flex flex-row justify-between gap-[2em]">
-               <div className="grid gap-5">
-               <div className="flex flex-row gap-1">
-                  <span className=" self-center text-gray-400">
-                    <GoDash />
-                  </span>
-                  <span className="subtext tracking-wider">Introduction</span>
-                </div>
-                
-                <h4 className="text-3xl font-bold text-white">
-                  My Projects
-                </h4>
-                <p className=" subtext text-white">
-                  Projects I have done in the companies I worked for
-                </p>
-               
-               </div>
-                <a className=" text-yellow-500 cursor-pointer font-bold">
-                  Explore More
-                </a>
-              </div>
-            <div className="w-full m-auto mt-10">
-             <SimpleSlider size={'sm'}>
-              {project.work.map((pj,k)=>{
-                return <div key={k} className="m-auto w-[90%]"><Card data={pj}  mainTools = {mainTools}/></div>
-              })}
-               {project.school.map((pj,k)=>{
-                return <div key={k} className="m-auto w-[90%]"><Card data={pj}  mainTools = {mainTools}/></div>
-              })}
-              </SimpleSlider>
-            </div>
-            </div>
-          </div>
         </div>
       </section>
       {/* blogs */}
@@ -235,16 +204,16 @@ export default async function Home() {
               <h4 className="text-3xl text-white font-bold">What's new?</h4>
             </div>
             <div>
-              {data.map((blg) => (
-               <Link href={`/blogs/${blg.slug}`} key={blg.slug}>
-                 <BlogToggle val={blg} />
+              {data && data.map((blg) => (
+                <Link href={`/blogs/${blg.slug}`} key={blg.slug}>
+                  <BlogToggle val={blg} />
                 </Link>
               ))}
             </div>
           </div>
         </div>
       </section>
-      
+
       <section className=" bg-[#333646] pt-[5em] pb-[8em] relative">
         <div className="grid justify-center">
           <div className="grid gap-5">
@@ -266,13 +235,7 @@ export default async function Home() {
             </ul>
           </div>
         </div>
-        {/* {y > 1500 && (
-          <div className="fixed bottom-5 lg:bottom-20 left-[80%] lg:left-[85%] w-fit bg-white text-[#333646] font-bold cursor-pointer text-2xl p-3 rounded-full">
-            <a href="#top">
-              <GoMoveToTop />
-            </a>
-          </div>
-        )} */}
+        
       </section>
     </main>
   );

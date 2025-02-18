@@ -21,32 +21,60 @@ const Navbar = () => {
           <Link href="/#top">May Than Hsu</Link>
         </div>
         <div  className="grid">
-          <ul className="list-none lg:flex lg:flex-row justify-between hidden">
-            <li>
-              {pathname === "/about" ? (
-                <Link className={`navBtn before:opacity-100 text-white`} href="/about">about</Link>
-              ):(
-                <Link className={`navBtn`} href="/about">about</Link>
-              )}
-            </li>
-            <li>
-              
-              {pathname === "/projects" ? (
-                <Link className={`navBtn before:opacity-100 text-white`} href="/projects">Projects</Link>
-              ):(
-                <Link className={`navBtn`} href="/projects">Projects</Link>
-              )}
+          <ul className="list-none lg:flex lg:flex-row justify-between hidden gap-10 mr-auto">
 
-            </li>
-            <li>
-       
-              {pathname.includes("blogs") ? (
-                <Link className={`navBtn before:opacity-100 text-white`} href="/blogs">Blogs</Link>
-              ):(
-                <Link className={`navBtn`} href="/blogs">Blogs</Link>
-              )}
-            </li>
-          </ul>
+{pathname === "/about" ? (
+  <li className="activeNav" >
+    <Link legacyBehavior href="/about">
+      <a className={`navBtn before:opacity-100 text-white`} data-replace="About">
+        <span>About</span>
+      </a>
+    </Link>
+  </li>
+) : (
+  <li>
+    <Link legacyBehavior href="/about">
+      <a className={`navBtn`} data-replace="About">
+        <span>About</span>
+      </a>
+    </Link>
+  </li>
+)}
+  {pathname === "/resume" ? (
+    <li className="activeNav" >
+      <Link legacyBehavior href="/resume">
+        <a className={`navBtn before:opacity-100 text-white`} data-replace="Resume">
+          <span>Resume</span>
+        </a>
+      </Link>
+    </li>
+  ) : (
+    <li>
+      <Link legacyBehavior href="/resume">
+        <a className={`navBtn`} data-replace="Resume">
+          <span>Resume</span>
+        </a>
+      </Link>
+    </li>
+  )}
+  {pathname.includes("blogs") ? (
+    <li className="activeNav" >
+      <Link legacyBehavior href="/blogs">
+        <a className={`navBtn before:opacity-100 text-white`} data-replace="Blogs">
+          <span>Blogs</span>
+        </a>
+      </Link>
+    </li>
+  ) : (
+    <li>
+      <Link legacyBehavior href="/blogs">
+        <a className={`navBtn`} data-replace="Blogs">
+          <span>Blogs</span>
+        </a>
+      </Link>
+    </li>
+  )}
+       </ul>
           <div className="self-center text-2xl text-white lg:hidden justify-self-end" onClick={toggleMenu}>
             <CgMenuLeftAlt/>
           </div>
