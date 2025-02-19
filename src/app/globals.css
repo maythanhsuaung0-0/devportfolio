@@ -7,8 +7,10 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-  --base-theme:236, 16%, 18%;
+  --fore-theme:236, 16%, 18%;
+  --base-theme:233, 15%, 24%;
   --match-theme:45, 93%, 47%;
+  
 }
 
 @media (prefers-color-scheme: dark) {
@@ -45,46 +47,55 @@ body {
 }
 
 @layer components {
-  .navBtn {
+  .navBtn,.themeBtn {
   overflow: hidden;
   position: relative;
   display: inline-block;
 }
 
   .navBtn::before,
-.navBtn::after {
+.navBtn::after,.themeBtn::before,.themeBtn::after {
  content: '';
   position: absolute;
   width: 100%;
   left: 0;
 }
-  .navBtn::before {
-  background-color: white;
+.navBtn::before,.themeBtn::before{  
   height: 2px;
   bottom: 0;
-  transform-origin: 100% 50%;
-  transform: scaleY(0);
   transition: transform .5s cubic-bezier(0.76, 0, 0.24, 1);
+  transform-origin: 100% 50%;}
+ 
+  .navBtn::before {
+ transform: scaleY(0);
 }
- .navBtn::after {
-  content: attr(data-replace);
+.themeBtn::before{transform:scaleX(0)}
+.navBtn::after,.themeBtn::after{  content: attr(data-replace);
   height: 100%;
   top: 0;
-  transform-origin: 100% 50%;
-  transform: translate3d(0%,200%, 0);
   transition: transform .5s cubic-bezier(0.76, 0, 0.24, 1);
-  color: #ffffff;
+  transform-origin: 100% 50%;}
+ 
+ .navBtn::after {
+ transform: translate3d(0%,200%, 0);
 }
+.themeBtn::after{
+  transform:translate3d(200%,0,0)}
 
-.navBtn::hover::before {
+.navBtn:hover::before,
+.themeBtn:hover::before {
   transform-origin: 0% 50%;
+}
+.navBtn:hover::before{
   transform: scaleY(1);
 }
-.navBtn:hover::after {
+.themeBtn:hover::before{
+  transform:scaleX(1);}
+.navBtn:hover::after,.themeBtn:hover::after {
   transform: translate3d(0, 0, 0);
 }
 
- .navBtn span {
+ .navBtn span,.themeBtn span {
   display: inline-block;
   transition: transform .5s cubic-bezier(0.76, 0, 0.24, 1);
 }
@@ -92,6 +103,8 @@ body {
 .navBtn:hover span {
   transform: translate3d( 0, -200%,0);
 }
+.themeBtn:hover span{
+  transform:translate3d(-200%,0,0)}
 
 .activeNav{
   position:relative;

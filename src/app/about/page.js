@@ -8,7 +8,7 @@ const ResumePage = async () => {
   const experience = data?.experience;
   const education = data?.education;
   return (
-    <main className="relative scroll-smooth bg-[#333646] min-h-screen">
+    <main className="relative scroll-smooth bg-baseTheme min-h-screen">
       <SideNav />
 
       <section className=" relative">

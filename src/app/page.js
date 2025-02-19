@@ -13,17 +13,15 @@ import BlogToggle from "@/components/BlogToggle";
 import Tooltip from "@/components/Tooltip";
 import SideNav from "@/components/SideNav";
 import getPostMetaData from "../../utils/getPostMetaData";
-import Card from "@/components/Card";
-import SimpleSlider from "@/components/Slider";
 
 export default async function Home() {
   const data = getPostMetaData('blogs');
   const apiUrl = process.env.NEXT_PUBLIC_SITE_URL
   const projects = await fetch(apiUrl + "/data.json");
-console.log("not working",projects)
+  console.log("not working", projects)
   const res = projects.json();
- const project = res.projects;
-console.log("well",res)
+  const project = res.projects;
+  console.log("well", res)
   const mainTools = []
   if (project) {
     project.work.map((pj) => {
@@ -45,7 +43,7 @@ console.log("well",res)
     <main className="relative scroll-smooth  bg-baseTheme">
       <SideNav />
       <section id="top" className=" relative">
-        <section className="h-screen grid align-middle">
+        <section className="h-screen bg-baseTheme grid align-middle">
           <div className="grid gap-[3em] lg:gap-0 lg:grid-cols-[60%,40%] w-[80%] lg:w-[70%] m-auto">
             <div className="flex flex-col gap-[3em] lg:gap-[7em] justify-between">
               <h1
@@ -88,10 +86,9 @@ console.log("well",res)
                 I am a fast-paced self-learner whose passion is Coding! I love
                 delivering visually appealing websites to end-users.
               </p>
-              <a className=" text-yellow-500 cursor-pointer font-semibold">
-                More about me
-              </a>
-            </div>
+              <button className="self-start"><Link href="https://docs.google.com/document/d/1rwSkVZJNL6ujzE8UALjHyursaA4viJY8" legacyBehavior>
+                <a data-replace="My Resume" target="_blank" className="themeBtn text-yellow-500 cursor-pointer font-semibold"><span>My Resume</span> </a></Link>
+              </button></div>
           </div>
         </section>
       </section>
@@ -235,7 +232,7 @@ console.log("well",res)
             </ul>
           </div>
         </div>
-        
+
       </section>
     </main>
   );
