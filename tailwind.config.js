@@ -7,10 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors:{
-        baseTheme:'hsl(var(--base-theme))',
-        matchTheme:'hsl(var(--match-theme))',
-        foreTheme:'hsl(var(--fore-theme))'
+      colors: {
+        baseTheme: 'hsl(var(--base-theme))',
+        matchTheme: 'hsl(var(--match-theme))',
+        foreTheme: 'hsl(var(--fore-theme))'
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
