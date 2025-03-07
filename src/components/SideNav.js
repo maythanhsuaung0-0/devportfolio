@@ -20,12 +20,8 @@ const SideNav = () => {
             </a>
         </li>
         <li className='cursor-pointer p-3 hover:bg-[#555771] rounded-full'>
-            <a href={'https://github.com/maythanhsuaung0-0'} target='_blank_'>
+            <a href={'/github'} target='_blank_'>
             <AiFillGithub/></a>
-        </li>
-        <li className='cursor-pointer p-3 hover:bg-[#555771] rounded-full'>
-            <a href={'https://www.instagram.com/s_shizuko/'} target='_blank_'>
-            <IoLogoInstagram/></a>
         </li>
       </ul>
     </div>

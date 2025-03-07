@@ -42,7 +42,7 @@ const Navbar = () => {
 )}
   {pathname === "/resume" ? (
     <li className="activeNav" >
-      <Link legacyBehavior href="/resume">
+      <Link legacyBehavior href="/resume"> 
         <a className={`navBtn before:opacity-100 text-white`} data-replace="Resume">
           <span>Resume</span>
         </a>

@@ -8,6 +8,19 @@ const withAnalyzer = withBundleAnalyzer({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async rewrites() {
+    return [
+      {
+        source: '/resume',
+        destination: '/MayAung_resume.pdf',
+      },
+      {
+        source: '/github',
+        destination: 'https://github.com/maythanhsuaung0-0'
+      },
+
+    ]
+  },
   images: {
     remotePatterns: [
       {

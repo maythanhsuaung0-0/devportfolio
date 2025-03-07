@@ -13,6 +13,8 @@ import BlogToggle from "@/components/BlogToggle";
 import Tooltip from "@/components/Tooltip";
 import SideNav from "@/components/SideNav";
 import getPostMetaData from "../../utils/getPostMetaData";
+import { HiOutlineMail } from "react-icons/hi";
+import { AiFillGithub } from "react-icons/ai";
 
 export default async function Home() {
   const data = getPostMetaData('blogs');
@@ -56,20 +58,25 @@ export default async function Home() {
                 </span>
                 <span className="py-2">su</span>
               </h1>
-              <div>
-                <ul className="flex flex-row gap-4">
-                  <li>
-                    <div className="text-2xl text-white cursor-pointer">
-                      <IoLogoInstagram />
-                    </div>
-                  </li>
-                  <li>
-                    <div className="text-2xl text-white cursor-pointer">
-                      <FaLinkedinIn />
-                    </div>
-                  </li>
-                </ul>
-              </div>
+              <div> 
+<div className="bg-[#47495f] w-fit p-2 rounded-full " >  <ul className='flex gap-2 text-xl'>
+        <li className='cursor-pointer p-3 hover:bg-[#555771] rounded-full'>
+            <a href='mailto:maythanhsuaung1111@gmail.com' target='_blank_'
+            >
+            <HiOutlineMail/>
+            </a>
+        </li>
+        <li className='cursor-pointer p-3 hover:bg-[#555771] rounded-full'>
+            <a href='https://www.linkedin.com/in/maythanhsu/' target='_blank_'>
+        <FaLinkedinIn/>
+            </a>
+        </li>
+        <li className='cursor-pointer p-3 hover:bg-[#555771] rounded-full'>
+            <a href={'/github'} target='_blank_'>
+            <AiFillGithub/></a>
+        </li>
+      </ul>
+    </div>          </div>
             </div>
 
             <div className="flex flex-col gap-5 lg:gap-[2em]">
