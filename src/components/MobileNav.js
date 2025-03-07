@@ -24,7 +24,7 @@ const MobileNav = ({toggleMenu}) => {
           </Link>
         </li>
         <li>
-          <Link className="navBtn" href="/projects">
+          <Link className="navBtn" href="/resume">
             Projects
           </Link>
         </li>
