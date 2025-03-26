@@ -18,32 +18,9 @@ import { AiFillGithub } from "react-icons/ai";
 
 export default async function Home() {
   const data = getPostMetaData('blogs');
-  const apiUrl = process.env.NEXT_PUBLIC_SITE_URL
-  const projects = await fetch(apiUrl + "/data.json");
-  console.log("not working", projects)
-  const res = projects.json();
-  const project = res.projects;
-  console.log("well", res)
-  const mainTools = []
-  if (project) {
-    project.work.map((pj) => {
-      if (!mainTools.includes(pj.tools[0])) {
-        mainTools.push(pj.tools[0])
-        console.log(pj.tools[0])
-      }
-    })
-    project.school.map((pj) => {
-      if (!mainTools.includes(pj.tools[0])) {
-        mainTools.push(pj.tools[0])
-        console.log(pj.tools[0])
-      }
-    })
-
-  }
-  console.log(mainTools)
+  
   return (
     <main className="relative scroll-smooth  bg-baseTheme">
-      <SideNav />
       <section id="top" className=" relative">
         <section className="h-screen bg-baseTheme grid align-middle">
           <div className="grid gap-[3em] lg:gap-0 lg:grid-cols-[60%,40%] w-[80%] lg:w-[70%] m-auto">
@@ -58,25 +35,9 @@ export default async function Home() {
                 </span>
                 <span className="py-2">su</span>
               </h1>
-              <div> 
-<div className="bg-[#47495f] w-fit p-2 rounded-full " >  <ul className='flex gap-2 text-xl'>
-        <li className='cursor-pointer p-3 hover:bg-[#555771] rounded-full'>
-            <a href='mailto:maythanhsuaung1111@gmail.com' target='_blank_'
-            >
-            <HiOutlineMail/>
-            </a>
-        </li>
-        <li className='cursor-pointer p-3 hover:bg-[#555771] rounded-full'>
-            <a href='https://www.linkedin.com/in/maythanhsu/' target='_blank_'>
-        <FaLinkedinIn/>
-            </a>
-        </li>
-        <li className='cursor-pointer p-3 hover:bg-[#555771] rounded-full'>
-            <a href={'/github'} target='_blank_'>
-            <AiFillGithub/></a>
-        </li>
-      </ul>
-    </div>          </div>
+              <div>
+                <SideNav />
+              </div>
             </div>
 
             <div className="flex flex-col gap-5 lg:gap-[2em]">
@@ -89,7 +50,7 @@ export default async function Home() {
               <h4 className="text-3xl text-white font-semibold">
                 Fullstack and frontend developer
               </h4>
-              <p className=" subtext text-white">
+              <p className=" text-lg text-white">
                 I am a fast-paced self-learner whose passion is Coding! I love
                 delivering visually appealing websites to end-users.
               </p>
@@ -101,7 +62,7 @@ export default async function Home() {
       </section>
       {/* resume */}
       <section className=" bg-baseTheme pt-[5em] lg:pt-[10em] pb-[5em] lg:pb-[10em]">
-        <div className="flex flex-col lg:flex-row gap-[4em] lg:gap-[3em] w-[80%] lg:w-[70%] m-auto">
+        <div className="flex flex-col lg:flex-row gap-[4em] lg:gap-[5em] w-[80%] lg:w-[70%] m-auto">
           <div>
             <div className="lg:h-[10em] flex flex-col gap-[2em]">
               <div className="flex flex-row gap-1">
@@ -111,7 +72,7 @@ export default async function Home() {
                 <span className="subtext tracking-wider">My Resume</span>
               </div>
               <h4 className="text-3xl font-bold text-white">Education</h4>{" "}
-              <p className=" subtext w-full text-white">
+              <p className=" text-lg w-full text-white">
                 As a dedicated student, I earned a place on the Director's List
                 throughout my years at polytechnic in Singapore...
               </p>
@@ -123,7 +84,7 @@ export default async function Home() {
           <div className="w-full">
             <div className="flex flex-col gap-[2em]">
               <h4 className="text-3xl font-bold text-white">Work experience</h4>
-              <p className=" subtext text-white">
+              <p className=" text-lg text-white">
                 I spent a year as an intern at THtwin Innovation Lab before
                 diving into two years as a full-time junior frontend developer
                 at Nawphire. During this time, I gained invaluable experience
@@ -132,7 +93,7 @@ export default async function Home() {
               <div className="flex flex-row gap-10">
                 <div className="flex flex-row gap-3 ">
                   <span className="text-5xl text-yellow-500">3</span>
-                  <span className="self-center italic text-sm text-white">
+                  <span className="self-center italic subtext text-white">
                     years of experience as Frontend Developer
                   </span>
                 </div>

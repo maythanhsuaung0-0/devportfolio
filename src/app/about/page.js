@@ -9,8 +9,7 @@ const ResumePage = async () => {
   const education = data?.education;
   return (
     <main className="relative scroll-smooth bg-baseTheme min-h-screen">
-      <SideNav />
-
+      <SideNav position="vertical" />
       <section className=" relative">
         <section
           id="top"
@@ -20,7 +19,7 @@ const ResumePage = async () => {
           <div className="grid lg:grid-cols-[auto,70%] gap-3">
             <div className="rounded-full z-20 relative bg-[url('/myID.jpg')] w-[13em] h-[13em] bg-center bg-cover "></div>
 
-            <div className="font-light text-white grid gap-1">
+            <div className="font-light text-base text-white grid gap-1">
               <p>
                 I am a frontend developer who is inspiring, diligent,
                 innovative, and a fast learner. I thrive on solving complex
@@ -57,7 +56,7 @@ const ResumePage = async () => {
             <h1 className="text-yellow-500">Professional Experience</h1>
           </div>
           <div className="grid gap-[3em]">
-            {experience.map((item ) => (
+            {experience.map((item) => (
               <div key={item.id} className="grid lg:grid-cols-[30%,auto] gap-3">
                 <div className="flex flex-row gap-[3em] lg:gap-[7em] justify-between">
                   <h1 className="text-white">{item.year}</h1>
@@ -70,7 +69,7 @@ const ResumePage = async () => {
                     </h4>
                     <ul className="grid gap-2 text-sm">
                       {item.responsibilities.map((i, key) => (
-                        <li key={key} className="codeLi font-light text-white">
+                        <li key={key} className="codeLi font-light text-base text-white">
                           {i}
                         </li>
                       ))}
@@ -103,19 +102,19 @@ const ResumePage = async () => {
                       <li className="bookLi">
                         {" "}
                         Prominent CourseWork
-                        <p className="pt-2 font-light text-white">
+                        <p className="pt-2 font-light text-base text-white">
                           {item.courseWork}
                         </p>
                       </li>
                       <li className="bookLi">
                         {" "}
                         CCAs
-                        <p className="pt-2 font-light text-white">{item.cca}</p>
+                        <p className="pt-2 font-light text-base text-white">{item.cca}</p>
                       </li>
                       <li className="bookLi">
                         {" "}
                         CGPA
-                        <p className="pt-2 font-light text-white">
+                        <p className="pt-2 font-light text-base text-white">
                           {item.cgpa}
                         </p>
                       </li>

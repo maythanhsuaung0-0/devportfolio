@@ -121,7 +121,7 @@ body {
 top:30%;}
 
   .subtext{
-    @apply text-sm text-gray-400;
+    @apply text-base text-gray-400;
   }
   .codeLi,.bookLi{
     @apply inline-block px-7 bg-no-repeat bg-[0px_4px] leading-6
