@@ -13,8 +13,6 @@ import BlogToggle from "@/components/BlogToggle";
 import Tooltip from "@/components/Tooltip";
 import SideNav from "@/components/SideNav";
 import getPostMetaData from "../../utils/getPostMetaData";
-import { HiOutlineMail } from "react-icons/hi";
-import { AiFillGithub } from "react-icons/ai";
 
 export default async function Home() {
   const data = getPostMetaData('blogs');
@@ -23,7 +21,7 @@ export default async function Home() {
     <main className="relative scroll-smooth  bg-baseTheme">
       <section id="top" className=" relative">
         <section className="h-screen bg-baseTheme grid align-middle">
-          <div className="grid gap-[3em] lg:gap-0 lg:grid-cols-[60%,40%] w-[80%] lg:w-[70%] m-auto">
+          <div className="grid gap-[3em] pt-[5em] lg:pt-0 lg:gap-0 lg:grid-cols-[60%,40%] w-[80%] lg:w-[70%] m-auto">
             <div className="flex flex-col gap-[3em] lg:gap-[7em] justify-between">
               <h1
                 className=" font-extrabold text-white text-7xl ]
@@ -76,10 +74,10 @@ export default async function Home() {
                 As a dedicated student, I earned a place on the Director's List
                 throughout my years at polytechnic in Singapore...
               </p>
-              <a className=" text-yellow-500 cursor-pointer font-bold">
-                See My Resume
-              </a>
-            </div>
+<button className="self-start"><Link href="https://docs.google.com/document/d/1rwSkVZJNL6ujzE8UALjHyursaA4viJY8" legacyBehavior>
+                <a data-replace="My Resume" target="_blank" className="themeBtn text-yellow-500 cursor-pointer font-semibold"><span>My Resume</span> </a></Link>
+              </button>
+           </div>
           </div>
           <div className="w-full">
             <div className="flex flex-col gap-[2em]">

@@ -15,7 +15,7 @@ return ()=>{
 window.removeEventListener("scroll",handleScroll)
 }
 },[])
-const verticalClass = `fixed top-[50%] transition-transform duration-200 ease-in-out transfrom -translate-y-[50%] left-[3em]` 
+const verticalClass = `fixed top-[50%] transition-transform duration-100 ease-in-out transfrom -translate-y-[50%] left-[3em]` 
   return (
     <div className={`bg-[#47495f] hidden lg:block p-2 rounded-full w-fit z-50 ${currentHeight>400 || position=="vertical"?verticalClass:''}`}>
       <ul className={`${currentHeight>400 || position=="vertical"?'grid':'flex'} gap-2 text-xl`}>
