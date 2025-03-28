@@ -4,7 +4,7 @@ import { IoCloseOutline } from 'react-icons/io5'
 
 const MobileNav = ({toggleMenu}) => {
   return (
-    <div className="fixed py-10  w-full h-full top-0 left-0 bg-[rgba(36,36,36,0.85)] backdrop-blur-sm z-50">
+    <div className="fixed py-10 text-white  w-full h-full top-0 left-0 bg-[rgba(36,36,36,0.85)] backdrop-blur-sm z-50">
     <div className="w-[85%] m-auto grid gap-2">
       <div
         className=" justify-self-end text-white text-3xl cursor-pointer"
@@ -25,7 +25,7 @@ const MobileNav = ({toggleMenu}) => {
         </li>
         <li>
           <Link className="navBtn" href="/resume">
-            Projects
+           Resume 
           </Link>
         </li>
         <li>
