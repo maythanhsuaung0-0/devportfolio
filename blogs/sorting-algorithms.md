@@ -1,5 +1,6 @@
 ---
 title: "Sorting Algorithms"
+cover: "/sort.jpeg"
 category: "Data Structure"
 date: "29-07-2024"
 readingTime: "00:05:00"
