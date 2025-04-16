@@ -9,15 +9,17 @@ import { TbBrandCSharp } from "react-icons/tb";
 import { IoLogoCss3 } from "react-icons/io";
 import { BiLogoTailwindCss } from "react-icons/bi";
 import { SiMysql } from "react-icons/si";
-import BlogToggle from "@/components/BlogToggle";
-import Tooltip from "@/components/Tooltip";
-import SideNav from "@/components/SideNav";
+import BlogToggle from "../components/BlogToggle"
+import Tooltip from "../components/Tooltip";
+import SideNav from "../components/SideNav";
 import getPostMetaData from "../../utils/getPostMetaData";
-
+import { getBlogPostArray, getDatabase } from "../../utils/notion";
 export default async function Home() {
-  const data = getPostMetaData('blogs');
-  
-  return (
+  const posts= await getDatabase();
+  const blog_posts= await getBlogPostArray(posts)
+  const result = await Promise.all(blog_posts)
+ return (
+
     <main className="relative scroll-smooth  bg-baseTheme">
       <section id="top" className=" relative">
         <section className="h-screen bg-baseTheme grid align-middle">
@@ -52,8 +54,10 @@ export default async function Home() {
                 I am a fast-paced self-learner whose passion is Coding! I love
                 delivering visually appealing websites to end-users.
               </p>
-              <button className="self-start"><Link href="https://docs.google.com/document/d/1rwSkVZJNL6ujzE8UALjHyursaA4viJY8" legacyBehavior>
-                <a data-replace="My Resume" target="_blank" className="themeBtn text-yellow-500 cursor-pointer font-semibold"><span>My Resume</span> </a></Link>
+              <button className="self-start">
+                <Link data-replace="My Resume" target="_blank" className="themeBtn text-yellow-500 cursor-pointer font-semibold"href="https://docs.google.com/document/d/1rwSkVZJNL6ujzE8UALjHyursaA4viJY8" >
+                <span>My Resume</span>
+              </Link>
               </button></div>
           </div>
         </section>
@@ -74,10 +78,11 @@ export default async function Home() {
                 As a dedicated student, I earned a place on the Director's List
                 throughout my years at polytechnic in Singapore...
               </p>
-<button className="self-start"><Link href="https://docs.google.com/document/d/1rwSkVZJNL6ujzE8UALjHyursaA4viJY8" legacyBehavior>
-                <a data-replace="My Resume" target="_blank" className="themeBtn text-yellow-500 cursor-pointer font-semibold"><span>My Resume</span> </a></Link>
+              <button className="self-start">
+                <Link data-replace="My Resume" target="_blank" className="themeBtn text-yellow-500 cursor-pointer font-semibold" href="https://docs.google.com/document/d/1rwSkVZJNL6ujzE8UALjHyursaA4viJY8" >
+                <span>My Resume</span></Link>
               </button>
-           </div>
+            </div>
           </div>
           <div className="w-full">
             <div className="flex flex-col gap-[2em]">
@@ -167,9 +172,9 @@ export default async function Home() {
               <h4 className="text-3xl text-white font-bold">What's new?</h4>
             </div>
             <div>
-              {data && data.map((blg) => (
+              {result && result.map((blg) => (
                 <Link href={`/blogs/${blg.slug}`} key={blg.slug}>
-                  <BlogToggle val={blg} />
+                  <BlogToggle title={blg.title} key={blg.id} date={blg.date} time={blg.time} />
                 </Link>
               ))}
             </div>
