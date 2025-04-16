@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import Link from 'next/link';
 import Text from '../NotionText'
-import styles from '../../app/posts.module.css';
+import styles from '../../styles/posts.module.css';
 
 export function renderBlock(block) {
   const { type, id } = block;

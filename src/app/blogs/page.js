@@ -1,20 +1,19 @@
 import React from 'react'
 import BlogCard from '@/components/BlogCard'
-import getPostMetaData from '../../../utils/getPostMetaData'
 import SideNav from '@/components/SideNav'
-import { getBlocks, getBlogPostArray, getDatabase, getPageFromSlug } from '../../../utils/notion'
+import { getBlogPostArray, getDatabase } from '../../../utils/notion'
 async function getPosts() {
   const database = await getDatabase();
-
   return database;
 }
 
 const BlogMainPage = async () => {
   const posts = await getPosts();
-  console.log('params', posts[0])
   let blog_posts = getBlogPostArray(posts)
   const result = await Promise.all(blog_posts)
-
+  if (!posts || blog_posts) {
+    return <div>No blogs found</div>
+  }
   return (
     <main className='min-h-screen bg-[#343646] relative'>
       <SideNav position="vertical" />

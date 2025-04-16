@@ -103,7 +103,8 @@ export const getBlocks = cache(async (blockID) => {
   }, []));
 });
 export const getBlogPostArray = async (posts) => {
-  return posts.map(async post => {
+  if(posts){
+  const results = posts.map(async post => {
     const plain_slug = await post?.properties?.slug['rich_text'][0]['plain_text']
     const page = await getPageFromSlug(plain_slug)
     const { title, URL, reading_time, created_at, tags } = page.properties
@@ -117,4 +118,7 @@ export const getBlogPostArray = async (posts) => {
       tags: tags.multi_select
     }
   });
+  return Promise.all(results)
+  }
+  return [] 
 }
