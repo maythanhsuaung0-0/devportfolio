@@ -27,7 +27,7 @@ export const getDatabase = cache(async () => {
   const response = await notion.databases.query({
     database_id: databaseId,
   });
-  return response.results;
+  return { props: response.results, revalidate: revalidate };
 });
 
 export const getPage = cache(async (pageId) => {
@@ -98,27 +98,31 @@ export const getBlocks = cache(async (blockID) => {
       }
     } else {
       acc.push(curr);
-    } 
+    }
     return acc;
   }, []));
 });
 export const getBlogPostArray = async (posts) => {
-  if(posts){
-  const results = posts.map(async post => {
-    const plain_slug = await post?.properties?.slug['rich_text'][0]['plain_text']
-    const page = await getPageFromSlug(plain_slug)
-    const { title, URL, reading_time, created_at, tags } = page.properties
-    return {
-      id: page.id,
-      slug: plain_slug,
-      url: URL.url,
-      time: reading_time.number,
-      date: created_at.created_time,
-      title: title.rich_text[0].plain_text,
-      tags: tags.multi_select
+  if (posts) {
+    const results = posts.map(async post => {
+      const plain_slug = await post?.properties?.slug['rich_text'][0]['plain_text']
+      const page = await getPageFromSlug(plain_slug)
+      const { title, URL, reading_time, created_at, tags } = page.properties
+      return {
+        id: page.id,
+        slug: plain_slug,
+        url: URL.url,
+        time: reading_time.number,
+        date: created_at.created_time,
+        title: title.rich_text[0].plain_text,
+        tags: tags.multi_select
+      }
+    }); 
+    if(!Array.isArray(results)){
+      console.log('result',results)
+      throw new Error("Expected data to be array")
     }
-  });
-  return Promise.all(results)
+    return await Promise.all(results)
   }
-  return [] 
+  return []
 }

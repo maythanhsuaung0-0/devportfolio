@@ -15,7 +15,7 @@ import SideNav from "../components/SideNav";
 import { getBlogPostArray, getDatabase } from "../../utils/notion";
 export default async function Home() {
   const posts= await getDatabase();
-  const blog_posts= await getBlogPostArray(posts)
+  const blog_posts= await getBlogPostArray(posts.props)
   const result = await Promise.all(blog_posts)
   if(!posts){
     return <div>Error 404</div>

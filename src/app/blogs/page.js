@@ -9,7 +9,7 @@ async function getPosts() {
 
 const BlogMainPage = async () => {
   const posts = await getPosts();
-  let blog_posts = getBlogPostArray(posts)
+  let blog_posts = await getBlogPostArray(posts.props)
   const result = await Promise.all(blog_posts)
   if (!posts || blog_posts) {
     return <div>No blogs found</div>
