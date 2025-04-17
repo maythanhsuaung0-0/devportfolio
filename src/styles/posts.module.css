@@ -117,6 +117,7 @@ height:1px;
 
 .table {
   border: 1px solid currentColor;
+  max-width:100%;
   border-collapse: collapse;
 }
 .table th {
@@ -158,4 +159,13 @@ height:1px;
   .container{
     max-width:500px;
   }
+
+.table th {
+  padding: 3px 6px;
+  font-size:10px;
+}
+.table td {
+  padding: 3px 6px;
+  font-size:10px;
+}
 }

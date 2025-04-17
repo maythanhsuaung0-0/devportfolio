@@ -26,7 +26,7 @@ const BlogPage = async ({ params }) => {
   }
   return (
     <main className='min-h-screen bg-[#343646] relative'>
-      <article className={`${styles.container} prose prose-invert `}>
+      <article className={`${styles.container} prose prose-invert prose-code:bg-slate-950 `}>
         <div className='w-[85%] lg:w-[85%] flex flex-col-reverse lg:grid lg:grid-cols-[70%,auto] gap-5 lg:gap-10 mr-auto ml-auto lg:mr-0 lg:ml-auto pt-[6em] lg:pt-[8em]  lg:py-[5em]'>
 
           <div>
