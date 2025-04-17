@@ -18,7 +18,7 @@ export default async function Home() {
   const blog_posts= await getBlogPostArray(posts.props)
   const result = await Promise.all(blog_posts)
   if(!posts){
-    return <div>Error 404</div>
+    return <div className="h-screen w-full grid items-center"><h3>Error 404</h3></div>
   }
  return (
 

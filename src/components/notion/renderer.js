@@ -155,9 +155,8 @@ export function renderBlock(block) {
       return <div key={id}>{block.children.map((child) => renderBlock(child))}</div>;
     }
     default:
-      return `❌ Unsupported block (${
-        type === 'unsupported' ? 'unsupported by Notion API' : type
-      })`;
+      return `❌ Unsupported block (${type === 'unsupported' ? 'unsupported by Notion API' : type
+        })`;
   }
 }
 
