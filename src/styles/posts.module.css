@@ -58,6 +58,7 @@ height:1px;
 
 .code {
   font-family: monospace;
+  background-color:oklch(12.9% 0.042 264.695);
   padding: 2px 4px;
   border-radius: 2px;
 }
@@ -67,7 +68,7 @@ height:1px;
 }
 
 .pre {
-  background-color: rgb(242, 242, 242);
+  background-color:oklch(12.9% 0.042 264.695);
   padding: 2px 4px;
   margin: 20px 0;
   line-height: 2.3;
