@@ -1,4 +1,5 @@
 import SideNav from "@/components/SideNav";
+import Image from "next/image";
 import React from "react";
 
 const ResumePage = async () => {
@@ -17,9 +18,8 @@ const ResumePage = async () => {
         >
           <h2 className="text-3xl font-bold mb-12 text-white">About Me</h2>
           <div className="grid lg:grid-cols-[auto,70%] gap-3">
-            <div className="rounded-full z-20 relative bg-[url('/myID.jpg')] w-[13em] h-[13em] bg-center bg-cover "></div>
-
-            <div className="font-light text-base text-white grid gap-1">
+            <Image src={'/myID.png'} alt="myPhoto" width={400} height={400} className="object-contain" />
+            <div className="font-light text-base text-white flex flex-col gap-1">
               <p>
                 I am a frontend developer who is inspiring, diligent,
                 innovative, and a fast learner. I thrive on solving complex
@@ -34,15 +34,18 @@ const ResumePage = async () => {
                 languages such as C++, and Java. I am also familiar with Python
                 and flask. I have experience in building RESTful APIs using
                 Node.js and Express.js. I have also worked with databases like
-                MySQL.
+                MySQL and PostgreSQL.
               </p>
-            </div>
-            <div className=" text-white lg:col-span-2">
               <p>
                 I have experience in deploying applications to platforms like
                 Heroku, and Vercel. I am also familiar with version control
-                systems like Git and GitHub. I am currently learning TypeScript
-                and GraphQL to improve my skills further.
+                systems like Git and GitHub. I am currently doing projects in TypeScript
+                as a further step of JavaScript.</p>
+
+            </div>
+            <div className=" text-white lg:col-span-2">
+              <p>
+                I am also learning Rust as another low-level programming language to improve my understanding on system level.
               </p>
               <p>
                 Apart from coding, I enjoy playing chess which helps me improve

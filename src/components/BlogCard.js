@@ -18,7 +18,7 @@ const BlogCard = async ({ title, date, time, url, slug, tags }) => {
   }
   return (
     <Link href={`/blogs/${slug}`}>
-      <div className='shadow-sm rounded-lg group bg-transparent/10 '>
+      <div className='shadow-sm rounded-lg hover:shadow-md group bg-transparent/10 '>
           <div className='relative group-hover:[&>div]:block transition-all delay-75 ease-in '>
                <div className='absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/60 to-black/10 hidden '></div>
           <img src={url} alt={title} className='w-full h-48 cursor-pointer object-cover rounded-tr-md rounded-tl-md' />
