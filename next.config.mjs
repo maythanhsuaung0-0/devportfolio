@@ -19,6 +19,16 @@ const nextConfig = {
         destination: 'https://github.com/maythanhsuaung0-0'
       },
 
+      {
+        source: '/instagram',
+        destination: 'https://www.instagram.com/she_shizuko_/'
+      },
+      {
+        source: '/linkedin',
+        destination: 'https://www.linkedin.com/in/maythanhsu'
+      },
+
+
     ]
   },
   images: {

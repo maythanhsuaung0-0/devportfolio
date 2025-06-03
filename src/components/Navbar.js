@@ -17,7 +17,7 @@ const Navbar = () => {
       {mobileView ?
         <MobileNav toggleMenu={toggleMenu} />
         : <div className="bg-[#34364685] fixed top-0 left-0 w-full z-50 backdrop-blur-md border-b border-[#44465b85]">
-          <div className="grid grid-cols-[80%,auto] lg:grid-cols-[60%,40%] w-[85%] lg:w-[70%] m-auto py-5">
+          <div className="grid grid-cols-[80%,auto] lg:grid-cols-[60%,40%] w-[90%] lg:w-[70%] m-auto py-5">
             <div className=" font-bold text-white capitalize">
               <Link href="/#top">May Than Hsu</Link>
             </div>

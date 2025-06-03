@@ -11,7 +11,7 @@ const BlogToggle = ({title,date,time}) => {
         <span className='lg:self-center hidden lg:block'>
             <LuDot />
         </span>
-        <span className='text-sm text-left self-center'>
+        <span className='text-sm lg:text-left lg:self-center'>
 {time}min read</span>
       </div>
       <div className='lg:self-center text-sm lg:text-base text-white'>
