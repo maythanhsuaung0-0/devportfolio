@@ -44,7 +44,9 @@ export function renderBlock(block) {
         <li key={block.id} className={styles.spanWithMargin}>
           <Text title={value.rich_text} />
           {/* eslint-disable-next-line no-use-before-define */}
-          {!!value.children && renderNestedList(block)}
+          {block.children?.map((child) => (
+            <Fragment key={child.id}>{renderBlock(child)}</Fragment>
+          ))}
         </li>
       );
     case 'to_do':
@@ -72,7 +74,7 @@ export function renderBlock(block) {
       return (
         <div className={styles.childPage} key={id}>
           <strong>{value?.title}</strong>
-          {block.children.map((child) => renderBlock(child))}
+          {block.children?.map((child) => renderBlock(child))}
         </div>
       );
     case 'image': {
@@ -88,12 +90,12 @@ export function renderBlock(block) {
     case 'divider':
       return <hr key={id} className={styles.hr} />;
     case 'quote':
-      return <blockquote key={id}>{value.rich_text[0].plain_text}</blockquote>;
+      return <blockquote key={id}><Text title={value.rich_text} /></blockquote>;
     case 'code':
       return (
         <pre key={id} className={styles.pre} >
           <code className={styles.code_block} key={id}>
-            {value.rich_text[0].plain_text}
+            {value.rich_text.map(text => text.plain_text ?? text.text?.content ?? '').join('')}
           </code>
         </pre>
       );
@@ -147,12 +149,12 @@ export function renderBlock(block) {
     case 'column_list': {
       return (
         <div className={styles.row} key={id}>
-          {block.children.map((childBlock) => renderBlock(childBlock))}
+          {block.children?.map((childBlock) => renderBlock(childBlock))}
         </div>
       );
     }
     case 'column': {
-      return <div key={id}>{block.children.map((child) => renderBlock(child))}</div>;
+      return <div key={id}>{block.children?.map((child) => renderBlock(child))}</div>;
     }
     default:
       return `❌ Unsupported block (${type === 'unsupported' ? 'unsupported by Notion API' : type
@@ -165,6 +167,7 @@ export function renderNestedList(blocks) {
   const value = blocks[type];
   if (!value) return null;
 
+  if (!value.children?.length) return null;
   const isNumberedList = value.children[0].type === 'numbered_list_item';
 
   if (isNumberedList) {

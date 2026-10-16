@@ -16,11 +16,7 @@ import { getBlogPostArray, getDatabase } from "../../utils/notion";
 import { HiOutlineMail } from "react-icons/hi";
 export default async function Home() {
   const posts = await getDatabase();
-  const blog_posts = await getBlogPostArray(posts.props)
-  const result = await Promise.all(blog_posts)
-  if (!posts) {
-    return <div className="h-screen w-full grid items-center"><h3>Error 404</h3></div>
-  }
+  const result = await getBlogPostArray(posts.props)
   return (
 
     <main className="relative scroll-smooth  bg-baseTheme">
@@ -78,7 +74,7 @@ export default async function Home() {
               </div>
               <h4 className="text-3xl font-bold text-white">Education</h4>{" "}
               <p className=" text-lg w-full text-white">
-                As a dedicated student, I earned a place on the Director's List
+                As a dedicated student, I earned a place on the Director&apos;s List
                 throughout my years at polytechnic in Singapore...
               </p>
               <button className="self-start">
@@ -172,10 +168,11 @@ export default async function Home() {
                 </span>
                 <span className="subtext tracking-wider">Blog</span>
               </div>
-              <h4 className="text-3xl text-white font-bold">What's new?</h4>
+              <h4 className="text-3xl text-white font-bold">What&apos;s new?</h4>
             </div>
             <div>
-              {result && result.map((blg) => (
+              {result.length === 0 && <p className="text-white">No blogs found.</p>}
+              {result.map((blg) => (
                 <Link href={`/blogs/${blg.slug}`} key={blg.slug}>
                   <BlogToggle title={blg.title} key={blg.id} date={blg.date} time={blg.time} />
                 </Link>
@@ -190,7 +187,7 @@ export default async function Home() {
           <div className="grid gap-5">
             <h1 className="text-center text-white">Mayshecodes</h1>
             <p className="text-center text-white">
-              Thanks for scrolling, that's all folks.
+              Thanks for scrolling, that&apos;s all folks.
             </p>
             <ul className="flex flex-row gap-4 justify-center text-white">
               <li>

@@ -17,7 +17,7 @@ return (
                 </span>
                 <span className="subtext tracking-wider">Blog</span>
               </div>
-              <h4 className="text-3xl text-white font-bold">What's new?</h4>
+              <h4 className="text-3xl text-white font-bold">What&apos;s new?</h4>
             </div>
             <div>
               {data && data.map((blg) => (

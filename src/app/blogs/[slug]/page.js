@@ -4,26 +4,15 @@ import Link from 'next/link'
 import { CgArrowLeft } from 'react-icons/cg'
 import { getBlocks, getPageFromSlug } from '../../../../utils/notion'
 import { renderBlock } from '@/components/notion/renderer'
-
-export const getPostContent = async (slug) => {
-  const page = await getPageFromSlug(slug)
-  console.log('page', page)
-}
+import { notFound } from 'next/navigation'
 
 const BlogPage = async ({ params }) => {
-  const param = await params  // const page = await getPageFromSlug(post?.slug)
-  const slug = param.slug
-  // console.log('page',page)
-  //const blocks = await getBlocks(page?.id)
-
+  const { slug } = await params
   const page = await getPageFromSlug(slug)
-  const blocks = await getBlocks(page.id)
-  const block = await blocks[0]
-
-  console.log('blocks', blocks)
-  if (!page || !blocks) {
-    return <div />;
+  if (!page) {
+    notFound()
   }
+  const blocks = await getBlocks(page.id)
   return (
     <main className='min-h-screen bg-[#343646] relative'>
       <article className={`${styles.container} prose prose-invert prose-code:bg-slate-950 prose-code:rounded-md prose-pre:bg-slate-950`}>
@@ -37,13 +26,7 @@ const BlogPage = async ({ params }) => {
               </div>
             </Link>
             <section>
-              {blocks?.length > 1 &&
-                blocks.map((block) => (
-                <Fragment key={block.id}>{renderBlock(block)}</Fragment>
-              ))}
-
-              <Fragment key={block.id}>{renderBlock(block)}</Fragment>
-              {block?.children?.map((block) => (
+              {blocks.map((block) => (
                 <Fragment key={block.id}>{renderBlock(block)}</Fragment>
               ))}
             </section>

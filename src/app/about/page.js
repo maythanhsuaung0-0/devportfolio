@@ -1,13 +1,10 @@
 import SideNav from "@/components/SideNav";
 import Image from "next/image";
 import React from "react";
+import data from "../../../public/data.json";
 
-const ResumePage = async () => {
-  const apiUrl = process.env.NEXT_PUBLIC_SITE_URL
-  const res = await fetch(apiUrl + "/data.json");
-  const data = await res.json();
-  const experience = data?.experience;
-  const education = data?.education;
+const ResumePage = () => {
+  const { experience, education } = data;
   return (
     <main className="relative scroll-smooth bg-baseTheme min-h-screen">
       <SideNav position="vertical" />

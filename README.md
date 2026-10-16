@@ -1,24 +1,57 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Developer portfolio
+
+A Next.js portfolio with an About page and an optional Notion-backed blog.
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies and start the development server:
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+No environment variables are required to run the portfolio. The About page uses
+`public/data.json` directly. Edit `src/app/page.js` to update the homepage.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Notion blog (optional)
+
+Copy `.env.example` to `.env.local` and set both values:
+
+```bash
+cp .env.example .env.local
+```
+
+- `NOTION_SECRET`: the integration's API secret.
+- `NOTION_DATABASE`: the database ID, shared with that integration.
+
+The blog expects these Notion properties:
+
+| Property | Type |
+| --- | --- |
+| `slug` | Text or formula returning a string; required for each post |
+| `title` | Text or title |
+| `URL` | URL for the cover image (optional) |
+| `reading_time` | Number of minutes (optional) |
+| `created_at` | Created time (optional; defaults to the page's creation time) |
+| `tags` | Multi-select (optional) |
+
+Restart the development server after changing environment variables. Without both
+Notion values, the home and blog pages show an empty blog list, `/api/blogs`
+returns an empty results array, and blog detail URLs return 404. Errors from a
+configured Notion integration are reported by the server so they can be fixed.
+
+## Check and build
+
+```bash
+npm run lint
+npm run build
+npm start
+```
+
+`npm start` serves the production build and requires `npm run build` first.
 
 ## Learn More
 
