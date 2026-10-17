@@ -11,6 +11,7 @@ const Navbar = () => {
     setmobileView(!mobileView);
   };
   const pathname = usePathname();
+  if (pathname === '/studio' || pathname.startsWith('/studio/')) return null;
   console.log(pathname)
   return (
     <>

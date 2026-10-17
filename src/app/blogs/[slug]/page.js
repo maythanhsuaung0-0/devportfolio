@@ -1,22 +1,24 @@
-import React, { Fragment } from 'react'
-import styles from '../../../styles/posts.module.css'
+import React from 'react'
+import Markdown from 'markdown-to-jsx'
 import Link from 'next/link'
 import { CgArrowLeft } from 'react-icons/cg'
-import { getBlocks, getPageFromSlug } from '../../../../utils/notion'
-import { renderBlock } from '@/components/notion/renderer'
+import { getBlogPost, getBlogPosts } from '../../../../utils/blogs'
 import { notFound } from 'next/navigation'
+
+export function generateStaticParams() {
+  return getBlogPosts().map(post => ({ slug: post.slug }))
+}
 
 const BlogPage = async ({ params }) => {
   const { slug } = await params
-  const page = await getPageFromSlug(slug)
-  if (!page) {
+  const post = getBlogPost(slug)
+  if (!post) {
     notFound()
   }
-  const blocks = await getBlocks(page.id)
   return (
     <main className='min-h-screen bg-[#343646] relative'>
-      <article className={`${styles.container} prose prose-invert prose-code:bg-slate-950 prose-code:rounded-md prose-pre:bg-slate-950`}>
-        <div className='w-[85%] lg:w-[85%] flex flex-col-reverse lg:grid lg:grid-cols-[70%,auto] gap-5 lg:gap-10 mr-auto ml-auto lg:mr-0 lg:ml-auto pt-[6em] lg:pt-[8em]  lg:py-[5em]'>
+      <article className='max-w-[1200px] mx-auto px-5 prose prose-invert prose-code:bg-slate-950 prose-code:rounded-md prose-pre:bg-slate-950'>
+        <div className='w-[85%] mx-auto pt-[6em] lg:pt-[8em] pb-[5em]'>
 
           <div>
             <Link href='/blogs'>
@@ -26,21 +28,9 @@ const BlogPage = async ({ params }) => {
               </div>
             </Link>
             <section>
-              {blocks.map((block) => (
-                <Fragment key={block.id}>{renderBlock(block)}</Fragment>
-              ))}
+              <Markdown>{post.content}</Markdown>
             </section>
-            {/*
-          <div className='reset-all-tailwind'>
-            <Markdown>{post.content}</Markdown>
           </div>
-          */}
-          </div>
-          {/*
-        <div className=''>
-          <OnThisPage data={postMeta[0].subtitle} />
-        </div>
-        */}
         </div>
       </article>
 

@@ -1,6 +1,5 @@
-import { getDatabase } from '../../../../utils/notion';
+import { getBlogPosts } from '../../../../utils/blogs';
 
-export async function GET() {
-  const { props: results } = await getDatabase();
-  return Response.json({ query: { results } });
+export function GET() {
+  return Response.json({ posts: getBlogPosts() });
 }

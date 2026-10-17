@@ -1,6 +1,6 @@
 # Developer portfolio
 
-A Next.js portfolio with an About page and an optional Notion-backed blog.
+A Next.js portfolio with Sanity-managed portfolio data and a local Markdown blog.
 
 ## Getting Started
 
@@ -13,35 +13,67 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-No environment variables are required to run the portfolio. The About page uses
-`public/data.json` directly. Edit `src/app/page.js` to update the homepage.
+Use Node.js 22.12 or later. Edit `src/app/page.js` to update the homepage.
 
-## Notion blog (optional)
+## Configure Sanity portfolio data
 
-Copy `.env.example` to `.env.local` and set both values:
+1. Create or select a project at [Sanity Manage](https://www.sanity.io/manage)
+   and note its project ID and dataset name.
+2. Copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_SANITY_PROJECT_ID`
+   and `NEXT_PUBLIC_SANITY_DATASET`. A public dataset does not need a token.
+   For a private dataset, set `SANITY_API_READ_TOKEN` to a Viewer token.
+3. In the Sanity project's API settings, add `http://localhost:3000` as a CORS
+   origin with credentials allowed. Add the production website origin when deploying.
+4. Run `npm run dev` and open [Studio](http://localhost:3000/studio). Sign in to
+   Sanity, open **Portfolio Data**, and fill in the Work Experience, Education,
+   and Projects tabs. Click **Publish** when your changes are ready.
+5. Open `/about` to see your published experience and education. Published
+   changes are refreshed on a subsequent request after the 60-second cache expires.
 
-```bash
-cp .env.example .env.local
+Set the same environment variables in your hosting provider before building the
+production app; Studio's project ID and dataset are included at build time.
+
+The Studio is embedded at `/studio`, including its nested editor routes. It uses
+one document with ID `portfolio`. Array order in Studio controls display order.
+The schema matches the education, experience, and school/work project fields that
+were in `public/data.json`. Project data is editable and available through
+`getPortfolioData()`, but there is no projects page in the current website.
+
+`public/data.json` is retained unchanged and is no longer read by the website.
+Without Sanity configuration or a published portfolio document, experience and
+education show empty states. The integration does not import the JSON data into
+Sanity. The existing biography, homepage text, and Markdown blog are separate
+from this portfolio data schema.
+
+## Add or edit a blog post
+
+Blog posts are Markdown files in `blogs/`. The filename determines the URL:
+`blogs/sorting-algorithms.md` is available at `/blogs/sorting-algorithms`.
+
+Create a file such as `blogs/my-new-post.md` with metadata followed by Markdown:
+
+```markdown
+---
+title: "My New Post"
+cover: "/code.png"
+category: "Development"
+date: "2026-10-16"
+readingTime: 5
+---
+
+# My New Post
+
+Write the article here.
 ```
 
-- `NOTION_SECRET`: the integration's API secret.
-- `NOTION_DATABASE`: the database ID, shared with that integration.
+Use `YYYY-MM-DD` dates and a number of minutes for `readingTime`. Put images in
+`public/` and reference them with paths such as `/code.png`. If omitted, the cover
+defaults to `/code.png` and the reading time is estimated from the article length.
 
-The blog expects these Notion properties:
-
-| Property | Type |
-| --- | --- |
-| `slug` | Text or formula returning a string; required for each post |
-| `title` | Text or title |
-| `URL` | URL for the cover image (optional) |
-| `reading_time` | Number of minutes (optional) |
-| `created_at` | Created time (optional; defaults to the page's creation time) |
-| `tags` | Multi-select (optional) |
-
-Restart the development server after changing environment variables. Without both
-Notion values, the home and blog pages show an empty blog list, `/api/blogs`
-returns an empty results array, and blog detail URLs return 404. Errors from a
-configured Notion integration are reported by the server so they can be fixed.
+The homepage and `/blogs` list posts with the newest dates first. Blog detail pages
+render the Markdown content; unknown filenames return 404. `/api/blogs` returns
+local post metadata as `{ "posts": [...] }`. No external service or credentials
+are needed. Rebuild the production site after adding or editing posts.
 
 ## Check and build
 

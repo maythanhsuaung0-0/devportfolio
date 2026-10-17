@@ -1,10 +1,10 @@
 import React from "react"
 import BlogToggle from "@/components/BlogToggle";
-import getPostMetaData from "../../utils/getPostMetaData";
+import { getBlogPosts } from "../../utils/blogs";
 import { GoDash } from "react-icons/go";
 import Link from "next/link";
 export const BlogSection=()=>{
-const data = getPostMetaData('blogs') 
+const data = getBlogPosts()
 return (
 
  <section className="bg-[#242735] py-[5em]">
@@ -22,7 +22,7 @@ return (
             <div>
               {data && data.map((blg) => (
                 <Link href={`/blogs/${blg.slug}`} key={blg.slug}>
-                  <BlogToggle val={blg} />
+                  <BlogToggle title={blg.title} date={blg.date} time={blg.readingTime} />
                 </Link>
               ))}
             </div>

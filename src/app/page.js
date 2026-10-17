@@ -12,11 +12,10 @@ import { SiMysql } from "react-icons/si";
 import BlogToggle from "../components/BlogToggle"
 import Tooltip from "../components/Tooltip";
 import SideNav from "../components/SideNav";
-import { getBlogPostArray, getDatabase } from "../../utils/notion";
+import { getBlogPosts } from "../../utils/blogs";
 import { HiOutlineMail } from "react-icons/hi";
-export default async function Home() {
-  const posts = await getDatabase();
-  const result = await getBlogPostArray(posts.props)
+export default function Home() {
+  const posts = getBlogPosts();
   return (
 
     <main className="relative scroll-smooth  bg-baseTheme">
@@ -53,11 +52,10 @@ export default async function Home() {
                 I am a fast-paced self-learner whose passion is Coding! I love
                 delivering visually appealing websites to end-users.
               </p>
-              <button className="self-start">
-                <Link data-replace="My Resume" target="_blank" className="themeBtn text-yellow-500 cursor-pointer font-semibold" href="https://docs.google.com/document/d/1rwSkVZJNL6ujzE8UALjHyursaA4viJY8" >
-                  <span>My Resume</span>
-                </Link>
-              </button></div>
+              <Link data-replace="My Resume" target="_blank" className="self-start themeBtn text-yellow-500 cursor-pointer font-semibold" href="https://docs.google.com/document/d/1rwSkVZJNL6ujzE8UALjHyursaA4viJY8" >
+                <span>My Resume</span>
+              </Link>
+            </div>
           </div>
         </section>
       </section>
@@ -77,10 +75,9 @@ export default async function Home() {
                 As a dedicated student, I earned a place on the Director&apos;s List
                 throughout my years at polytechnic in Singapore...
               </p>
-              <button className="self-start">
-                <Link data-replace="My Resume" target="_blank" className="themeBtn text-yellow-500 cursor-pointer font-semibold" href="https://docs.google.com/document/d/1rwSkVZJNL6ujzE8UALjHyursaA4viJY8" >
-                  <span>My Resume</span></Link>
-              </button>
+              <Link data-replace="My Resume" target="_blank" className="self-start themeBtn text-yellow-500 cursor-pointer font-semibold" href="https://docs.google.com/document/d/1rwSkVZJNL6ujzE8UALjHyursaA4viJY8" >
+                <span>My Resume</span>
+              </Link>
             </div>
           </div>
           <div className="w-full">
@@ -171,10 +168,10 @@ export default async function Home() {
               <h4 className="text-3xl text-white font-bold">What&apos;s new?</h4>
             </div>
             <div>
-              {result.length === 0 && <p className="text-white">No blogs found.</p>}
-              {result.map((blg) => (
+              {posts.length === 0 && <p className="text-white">No blogs found.</p>}
+              {posts.map((blg) => (
                 <Link href={`/blogs/${blg.slug}`} key={blg.slug}>
-                  <BlogToggle title={blg.title} key={blg.id} date={blg.date} time={blg.time} />
+                  <BlogToggle title={blg.title} date={blg.date} time={blg.readingTime} />
                 </Link>
               ))}
             </div>

@@ -1,10 +1,12 @@
 import SideNav from "@/components/SideNav";
 import Image from "next/image";
 import React from "react";
-import data from "../../../public/data.json";
+import { getPortfolioData } from "../../../utils/portfolio";
 
-const ResumePage = () => {
-  const { experience, education } = data;
+export const revalidate = 60;
+
+const ResumePage = async () => {
+  const { experience, education } = await getPortfolioData();
   return (
     <main className="relative scroll-smooth bg-baseTheme min-h-screen">
       <SideNav position="vertical" />
@@ -56,6 +58,7 @@ const ResumePage = () => {
             <h1 className="text-yellow-500">Professional Experience</h1>
           </div>
           <div className="grid gap-[3em]">
+            {experience.length === 0 && <p className="text-white">No experience entries available.</p>}
             {experience.map((item) => (
               <div key={item.id} className="grid lg:grid-cols-[30%,auto] gap-3">
                 <div className="flex flex-row gap-[3em] lg:gap-[7em] justify-between">
@@ -85,6 +88,7 @@ const ResumePage = () => {
             <h1 className="text-yellow-500">Education</h1>
           </div>
           <div className="grid gap-[3em]">
+            {education.length === 0 && <p className="text-white">No education entries available.</p>}
             {education.map((item) => (
               <div key={item.id} className="grid lg:grid-cols-[30%,auto] gap-3">
                 <div className="flex flex-row gap-[3em] lg:gap-[7em] justify-between">

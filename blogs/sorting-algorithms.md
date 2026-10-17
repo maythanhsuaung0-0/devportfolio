@@ -2,8 +2,8 @@
 title: "Sorting Algorithms"
 cover: "/sort.jpeg"
 category: "Data Structure"
-date: "29-07-2024"
-readingTime: "00:05:00"
+date: "2024-07-29"
+readingTime: 5
 subTitles:
   - ttl: "Basic Sort"
     content:
@@ -145,7 +145,6 @@ print(my_arr)
 And so on.
 * This will stop comparing when either of the pointer reaches to the end of the array.
 * The pointer which is still not reaching the end, it needs to go on itself without comparing, just adding to the newlist.
-![This is an alt text.](/bubblesort.jpg)
 
 ```
 def mergeSort(arr):

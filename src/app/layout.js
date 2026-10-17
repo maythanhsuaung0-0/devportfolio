@@ -2,7 +2,7 @@ import "../styles/globals.css"
 import Navbar from "../components/Navbar"
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className="bg-baseTheme">
         <Navbar/>
         {children}</body>
