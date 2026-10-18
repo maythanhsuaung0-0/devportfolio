@@ -9,7 +9,7 @@ export default async function ResumePage() {
   }
 
   return (
-    <main className="p-6 text-white">
+    <main className="p-6">
       Resume is not available yet.
     </main>
   );

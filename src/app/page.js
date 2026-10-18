@@ -1,19 +1,17 @@
 import Image from "next/image";
+import ProjectGrid from "@/components/ProjectGrid";
 import RevealWords from "@/components/RevealWords";
 import ScrollReveal from "@/components/ScrollReveal";
 import { getPortfolioData } from "../../utils/portfolio";
 
 export const revalidate = 60;
 
-const skills = [
-  [
-    "Frontend",
-    "HTML, CSS, JavaScript, TypeScript, React, Next.js, Vue.js, Tailwind CSS, Material UI, Redux, React Query",
-  ],
-  ["Backend", "Node.js, Express.js, Python, Flask"],
-  ["Languages", "C++, Java, C#, Rust (learning)"],
-  ["Data & deployment", "MySQL, PostgreSQL, AWS S3, Heroku, Vercel"],
-  ["Design & workflow", "Figma, Git, GitHub"],
+const skillCategories = [
+  ["frontend", "Frontend"],
+  ["backend", "Backend"],
+  ["languages", "Languages"],
+  ["dataAndDeployment", "Data & deployment"],
+  ["designAndWorkflow", "Design & workflow"],
 ];
 
 function formatDate(value) {
@@ -28,9 +26,18 @@ function formatDate(value) {
 }
 
 function experiencePeriod(item) {
-  if (!item.startDate) return item.year || (item.isCurrentJob ? "Present" : "");
-  const end = item.isCurrentJob ? "Present" : formatDate(item.endDate);
+  if (!item.startDate)
+    return item.year || (item.isCurrentSchool ? "Present" : "");
+  const end = item.isCurrentSchool ? "Present" : formatDate(item.endDate);
   return [formatDate(item.startDate), end].filter(Boolean).join(" – ");
+}
+
+function formatCoursework(value) {
+  if (Array.isArray(value)) return value.filter(Boolean).join(", ");
+  return String(value ?? "")
+    .split(/\s*(?:\r?\n|;)\s*/)
+    .filter(Boolean)
+    .join(", ");
 }
 
 function ProfileLinks() {
@@ -55,15 +62,11 @@ function ProfileLinks() {
 }
 
 export default async function Home() {
-  const { resumeUrl, projects, experience, education } =
+  const { aboutMe, skills, resumeUrl, projects, experience, education } =
     await getPortfolioData();
-  const allProjects = [
-    ...projects.school.map((project) => ({
-      ...project,
-      kind: "School project",
-    })),
-    ...projects.work.map((project) => ({ ...project, kind: "Work project" })),
-  ];
+  const skillRows = skillCategories
+    .map(([key, label]) => [label, skills?.[key] ?? []])
+    .filter(([, tools]) => tools.length > 0);
 
   return (
     <main id="top" className="document">
@@ -71,17 +74,39 @@ export default async function Home() {
       <section className="document-intro" aria-labelledby="intro-heading">
         <div className="intro-heading">
           <div>
-            <h1 id="intro-heading">May Than Hsu</h1>
-            <p className="intro-role">Frontend &amp; fullstack developer</p>
+            <h1 id="intro-heading">
+              May Than Hsu{" "}
+              <span className="name-ending">
+                Aung
+                <svg
+                  className="name-pencil-lines"
+                  viewBox="0 0 86 18"
+                  fill="none"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M3 6C25 2 53 6 82 3M13 14C32 10 55 14 76 10"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </span>
+            </h1>
+            <p className="intro-role">Software Engineer</p>
           </div>
-          <Image
-            src="/myID.png"
-            alt="May Than Hsu"
-            width={76}
-            height={92}
-            className="portrait"
-            priority
-          />
+          <div className="portrait-frame">
+            <Image
+              src="/myID.png"
+              alt="May Than Hsu"
+              width={200}
+              height={200}
+              sizes="(max-width: 540px) 136px, 160px"
+              className="portrait"
+              priority
+            />
+          </div>
         </div>
         <p className="intro-description">
           I build responsive websites and web applications, from thoughtful
@@ -107,33 +132,10 @@ export default async function Home() {
         className="document-section"
         aria-labelledby="projects-heading"
       >
-        <h2 id="projects-heading"><RevealWords>Projects</RevealWords></h2>
-        <div className="entry-list">
-          {allProjects.length === 0 && <p><RevealWords>Project details are coming soon.</RevealWords></p>}
-          {allProjects.map((project, index) => (
-            <article
-              className="project-entry"
-              key={`${project.kind}-${project.id ?? index}`}
-            >
-              <div className="entry-heading">
-                <h3><RevealWords>{project.projectName}</RevealWords></h3>
-                {project.year && (
-                  <span className="entry-date"><RevealWords>{project.year}</RevealWords></span>
-                )}
-              </div>
-              <p className="entry-context">
-                <RevealWords>{[project.kind, project.name].filter(Boolean).join(" · ")}</RevealWords>
-              </p>
-              {project.details && <p><RevealWords>{project.details}</RevealWords></p>}
-              {project.tools.length > 0 && (
-                <p className="project-tools">
-                  <span className="sr-only">Tools: </span>
-                  <RevealWords>{project.tools.join(", ")}</RevealWords>
-                </p>
-              )}
-            </article>
-          ))}
-        </div>
+        <h2 id="projects-heading">
+          <RevealWords>Projects</RevealWords>
+        </h2>
+        <ProjectGrid projects={projects} />
       </section>
 
       <section
@@ -141,39 +143,33 @@ export default async function Home() {
         className="document-section"
         aria-labelledby="about-heading"
       >
-        <h2 id="about-heading"><RevealWords>About</RevealWords></h2>
-        <div className="body-copy">
-          <p>
-            <RevealWords>
-              I started coding after high school and have been learning and
-              building ever since. I enjoy solving complex problems and turning
-              designs into responsive, visually thoughtful websites.
-            </RevealWords>
-          </p>
-          <p>
-            <RevealWords>
-              My early experience includes an internship at THtwin Innovation Lab
-              and frontend development at Nawphire. I&apos;ve built RESTful APIs,
-              worked with relational databases, and deployed applications with
-              Heroku and Vercel.
-            </RevealWords>
-          </p>
-          <p>
-            <RevealWords>
-              I&apos;m currently building projects in TypeScript and learning Rust
-              to deepen my understanding of systems programming. Away from the
-              keyboard, I play chess to sharpen my problem-solving and rational
-              thinking.
-            </RevealWords>
-          </p>
+        <h2 id="about-heading">
+          <RevealWords>About</RevealWords>
+        </h2>
+        <div className="body-copy about-copy">
+          {aboutMe
+            .split(/\n\s*\n/)
+            .map((paragraph) => paragraph.trim())
+            .filter(Boolean)
+            .map((paragraph, index) => (
+              <p key={index}>
+                <RevealWords>{paragraph}</RevealWords>
+              </p>
+            ))}
         </div>
         <div id="skills" className="skills-section">
-          <h3><RevealWords>Skills &amp; tools</RevealWords></h3>
+          <h3>
+            <RevealWords>Skills &amp; tools</RevealWords>
+          </h3>
           <dl className="skills-list">
-            {skills.map(([name, tools]) => (
+            {skillRows.map(([name, tools]) => (
               <div key={name}>
-                <dt><RevealWords>{name}</RevealWords></dt>
-                <dd><RevealWords>{tools}</RevealWords></dd>
+                <dt>
+                  <RevealWords>{name}</RevealWords>
+                </dt>
+                <dd>
+                  <RevealWords>{tools.join(", ")}</RevealWords>
+                </dd>
               </div>
             ))}
           </dl>
@@ -185,10 +181,14 @@ export default async function Home() {
         className="document-section"
         aria-labelledby="experience-heading"
       >
-        <h2 id="experience-heading"><RevealWords>Experience</RevealWords></h2>
+        <h2 id="experience-heading">
+          <RevealWords>Experience</RevealWords>
+        </h2>
         <div className="entry-list entry-list--collapsible">
           {experience.length === 0 && (
-            <p><RevealWords>Experience details are coming soon.</RevealWords></p>
+            <p>
+              <RevealWords>Experience details are coming soon.</RevealWords>
+            </p>
           )}
           {experience.map((item, index) => (
             <details
@@ -196,21 +196,31 @@ export default async function Home() {
               key={item.id ?? index}
             >
               <summary>
-                <span className="resume-entry-title"><RevealWords>{item.company}</RevealWords></span>
+                <span className="resume-entry-title">
+                  <RevealWords>{item.company}</RevealWords>
+                </span>
                 {experiencePeriod(item) && (
-                  <span className="entry-date"><RevealWords>{experiencePeriod(item)}</RevealWords></span>
+                  <span className="entry-date">
+                    <RevealWords>{experiencePeriod(item)}</RevealWords>
+                  </span>
                 )}
                 <span className="disclosure-icon" aria-hidden="true">
                   +
                 </span>
               </summary>
               <div className="resume-entry-content">
-                <h3><RevealWords>{item.role}</RevealWords></h3>
-                <p className="entry-context"><RevealWords>{item.company}</RevealWords></p>
+                <h3>
+                  <RevealWords>{item.role}</RevealWords>
+                </h3>
+                <p className="entry-context">
+                  <RevealWords>{item.company}</RevealWords>
+                </p>
                 {item.responsibilities.length > 0 && (
                   <ul className="responsibilities">
                     {item.responsibilities.map((responsibility, i) => (
-                      <li key={i}><RevealWords>{responsibility}</RevealWords></li>
+                      <li key={i}>
+                        <RevealWords>{responsibility}</RevealWords>
+                      </li>
                     ))}
                   </ul>
                 )}
@@ -225,36 +235,56 @@ export default async function Home() {
         className="document-section"
         aria-labelledby="education-heading"
       >
-        <h2 id="education-heading"><RevealWords>Education</RevealWords></h2>
+        <h2 id="education-heading">
+          <RevealWords>Education</RevealWords>
+        </h2>
         <div className="entry-list entry-list--collapsible">
-          {education.length === 0 && <p><RevealWords>Education details are coming soon.</RevealWords></p>}
+          {education.length === 0 && (
+            <p>
+              <RevealWords>Education details are coming soon.</RevealWords>
+            </p>
+          )}
           {education.map((item, index) => (
             <details
               className="resume-entry education-entry"
               key={item.id ?? index}
             >
               <summary>
-                <span className="resume-entry-title"><RevealWords>{item.school}</RevealWords></span>
-                {item.year && <span className="entry-date"><RevealWords>{item.year}</RevealWords></span>}
+                <span className="resume-entry-title">
+                  <RevealWords>{item.school}</RevealWords>
+                </span>
+                {item.year && (
+                  <span className="entry-date">
+                    <RevealWords>{item.year}</RevealWords>
+                  </span>
+                )}
                 <span className="disclosure-icon" aria-hidden="true">
                   +
                 </span>
               </summary>
               <div className="resume-entry-content">
-                <h3><RevealWords>{item.degree}</RevealWords></h3>
-                <p className="entry-context"><RevealWords>{item.school}</RevealWords></p>
+                <h3>
+                  <RevealWords>{item.degree}</RevealWords>
+                </h3>
+                <p className="entry-context">
+                  <RevealWords>{item.school}</RevealWords>
+                </p>
                 <dl className="education-details">
                   {[
                     ["Major", item.major],
-                    ["Coursework", item.courseWork],
+                    ["Coursework", formatCoursework(item.courseWork)],
                     ["Activities", item.cca],
                     ["GPA", item.cgpa],
                   ]
                     .filter(([, value]) => value)
                     .map(([label, value]) => (
                       <div key={label}>
-                        <dt><RevealWords>{label}</RevealWords></dt>
-                        <dd><RevealWords>{value}</RevealWords></dd>
+                        <dt>
+                          <RevealWords>{label}</RevealWords>
+                        </dt>
+                        <dd>
+                          <RevealWords>{value}</RevealWords>
+                        </dd>
                       </div>
                     ))}
                 </dl>
@@ -265,8 +295,14 @@ export default async function Home() {
       </section>
 
       <footer id="contact" className="document-section document-footer">
-        <h2><RevealWords>Get in touch</RevealWords></h2>
-        <p><RevealWords>Have a project in mind? I&apos;d love to hear about it.</RevealWords></p>
+        <h2>
+          <RevealWords>Get in touch</RevealWords>
+        </h2>
+        <p>
+          <RevealWords>
+            Have a project in mind? I&apos;d love to hear about it.
+          </RevealWords>
+        </p>
         <a className="contact-email" href="mailto:maythanhsuag@gmail.com">
           <RevealWords>maythanhsuag@gmail.com</RevealWords>
         </a>

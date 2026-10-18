@@ -10,10 +10,31 @@ const projectFields = `
   projectName,
   year,
   "tools": coalesce(tools, []),
-  details
+  details,
+  "links": coalesce(links[]{
+    "id": _key,
+    label,
+    url
+  }, []),
+  "photos": coalesce(photos[]{
+    "id": _key,
+    alt,
+    caption,
+    "url": asset->url,
+    "width": asset->metadata.dimensions.width,
+    "height": asset->metadata.dimensions.height
+  }, [])
 `;
 
 export const portfolioQuery = `*[_type == "portfolio" && _id == "portfolio"][0]{
+  aboutMe,
+  skills {
+    frontend,
+    backend,
+    languages,
+    dataAndDeployment,
+    designAndWorkflow
+  },
   "resumeUrl": resume.asset->url,
   "experience": coalesce(experience[]{
     "id": _key,
@@ -35,10 +56,7 @@ export const portfolioQuery = `*[_type == "portfolio" && _id == "portfolio"][0]{
     cca,
     "cgpa": coalesce(gpa, cgpa)
   }, []),
-  "projects": {
-    "school": coalesce(projects.school[]{${projectFields}}, []),
-    "work": coalesce(projects.work[]{${projectFields}}, [])
-  }
+  "projects": coalesce(projects[]{${projectFields}}, [])
 }`;
 
 export async function getPortfolioData() {
@@ -65,12 +83,15 @@ export async function getPortfolioData() {
   if (!data) return fallbackPortfolio;
 
   return {
+    aboutMe: data.aboutMe ?? fallbackPortfolio.aboutMe,
+    skills: Object.fromEntries(Object.entries(fallbackPortfolio.skills).map(([category, tools]) => [
+      category, data.skills?.[category] ?? tools,
+    ])),
     resumeUrl: data?.resumeUrl ?? fallbackPortfolio.resumeUrl,
     experience: data?.experience ?? [],
     education: data?.education ?? [],
-    projects: {
-      school: data?.projects?.school ?? [],
-      work: data?.projects?.work ?? [],
-    },
+    projects: data.projects?.length
+      ? data.projects
+      : fallbackPortfolio.projects,
   };
 }

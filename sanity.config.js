@@ -14,6 +14,8 @@ export default defineConfig({
     structureTool({
       structure: S => S.list().title('Content').items([
         ...[
+          { id: 'aboutMe', title: 'About me' },
+          { id: 'skills', title: 'Skills & tools' },
           { id: 'experience', title: 'Work Experience' },
           { id: 'education', title: 'Education' },
           { id: 'projects', title: 'Projects' },

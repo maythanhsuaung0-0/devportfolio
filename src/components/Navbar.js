@@ -9,8 +9,9 @@ export default function Navbar() {
 
   return (
     <header className="document-header">
-      <a className="skip-link" href="#top">Skip to content</a>
-      <Link className="site-name" href="/#top">mayshecodes</Link>
+      <a className="skip-link" href="#top">
+        Skip to content
+      </a>
       <nav aria-label="Page sections">
         <Link href="/#projects">Projects</Link>
         <Link href="/#about">About</Link>
