@@ -1,5 +1,8 @@
 import 'server-only';
 import { createClient } from '@sanity/client';
+import localPortfolio from '../public/data.json';
+
+const fallbackPortfolio = { ...localPortfolio, resumeUrl: '/MayAung_resume.pdf' };
 
 const projectFields = `
   "id": _key,
@@ -16,6 +19,9 @@ export const portfolioQuery = `*[_type == "portfolio" && _id == "portfolio"][0]{
     "id": _key,
     year,
     role,
+    startDate,
+    endDate,
+    isCurrentJob,
     company,
     "responsibilities": coalesce(responsibilities, [])
   }, []),
@@ -27,7 +33,7 @@ export const portfolioQuery = `*[_type == "portfolio" && _id == "portfolio"][0]{
     major,
     courseWork,
     cca,
-    cgpa
+    "cgpa": coalesce(gpa, cgpa)
   }, []),
   "projects": {
     "school": coalesce(projects.school[]{${projectFields}}, []),
@@ -40,7 +46,7 @@ export async function getPortfolioData() {
   const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
 
   if (!projectId || !dataset) {
-    return { resumeUrl: null, experience: [], education: [], projects: { school: [], work: [] } };
+    return fallbackPortfolio;
   }
 
   const client = createClient({
@@ -56,8 +62,10 @@ export async function getPortfolioData() {
     next: { revalidate: 60, tags: ['portfolio'] },
   });
 
+  if (!data) return fallbackPortfolio;
+
   return {
-    resumeUrl: data?.resumeUrl ?? null,
+    resumeUrl: data?.resumeUrl ?? fallbackPortfolio.resumeUrl,
     experience: data?.experience ?? [],
     education: data?.education ?? [],
     projects: {

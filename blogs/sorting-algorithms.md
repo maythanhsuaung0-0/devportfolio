@@ -76,7 +76,8 @@ repeat the process
 | 7    | 3  | 5  | 7  | 7  | 7  | 9  | 11 | 12 | 24 | 29 |
 
 
-```def selectionSort(arr):
+```python
+def selectionSort(arr):
 	# 2,5,4,3
 	arr_len = len(arr)
 	for i in range(arr_len): # need to loop through all values, let the first value be min
@@ -112,7 +113,8 @@ print(selectionSort([2,5,7,1,4,2]))
 | 9    | 3  | 5  | 7  | 7  | 7  | 9  | 11 | 12 | 24 | 29 |
 
 
-```def insertionSort(arr):
+```python
+def insertionSort(arr):
 	n = len(arr)
 	for i in range(n):
 		current = i
@@ -192,7 +194,8 @@ the best case of the recursive function ( divide function) returns just one valu
 * divide and conquer
 * divide the left and right of the pivot’s correct position ( by considering the pivot is in correct location)
 
-```def quickSort(arr):
+```python
+def quickSort(arr):
 	divideArr(arr, 0 , len(arr) - 1)
 	
 def divideArr(arr, first , last):

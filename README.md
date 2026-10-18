@@ -1,6 +1,6 @@
 # Developer portfolio
 
-A Next.js portfolio with Sanity-managed portfolio data and a local Markdown blog.
+A single-page Next.js portfolio with Sanity-managed data and a local Markdown archive.
 
 ## Getting Started
 
@@ -19,7 +19,7 @@ Use Node.js 22.12 or later. Edit `src/app/page.js` to update the homepage.
 
 1. Create or select a project at [Sanity Manage](https://www.sanity.io/manage)
    and note its project ID and dataset name.
-2. Copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_SANITY_PROJECT_ID`
+2. Create `.env.local` and set `NEXT_PUBLIC_SANITY_PROJECT_ID`
    and `NEXT_PUBLIC_SANITY_DATASET`. A public dataset does not need a token.
    For a private dataset, set `SANITY_API_READ_TOKEN` to a Viewer token.
 3. In the Sanity project's API settings, add `http://localhost:3000` as a CORS
@@ -27,7 +27,7 @@ Use Node.js 22.12 or later. Edit `src/app/page.js` to update the homepage.
 4. Run `npm run dev` and open [Studio](http://localhost:3000/studio). Sign in to
    Sanity, open **Portfolio Data**, and fill in the Work Experience, Education,
    and Projects tabs. Click **Publish** when your changes are ready.
-5. Open `/about` to see your published experience and education. Published
+5. Open `/` to see your published projects, experience, and education. Published
    changes are refreshed on a subsequent request after the 60-second cache expires.
 
 Set the same environment variables in your hosting provider before building the
@@ -35,45 +35,25 @@ production app; Studio's project ID and dataset are included at build time.
 
 The Studio is embedded at `/studio`, including its nested editor routes. It uses
 one document with ID `portfolio`. Array order in Studio controls display order.
-The schema matches the education, experience, and school/work project fields that
-were in `public/data.json`. Project data is editable and available through
-`getPortfolioData()`, but there is no projects page in the current website.
+The homepage is a single document with projects, biography, skills, experience,
+education, and contact details. Its navigation jumps to sections on the same page.
+The old `/about` URL redirects to the About section; `/blogs` and known blog article
+URLs redirect to the homepage. `/resume` opens the resume file.
 
-`public/data.json` is retained unchanged and is no longer read by the website.
-Without Sanity configuration or a published portfolio document, experience and
-education show empty states. The integration does not import the JSON data into
-Sanity. The existing biography, homepage text, and Markdown blog are separate
-from this portfolio data schema.
+`public/data.json` supplies the existing projects, experience, and education when
+Sanity is not configured or there is no published portfolio document. Once a
+document is published, its arrays (including intentionally empty ones) take
+precedence. The local `/MayAung_resume.pdf` is used until a resume is uploaded.
+The integration does not import the JSON data into Sanity. The biography,
+homepage text, and Markdown archive are separate from this portfolio data schema.
 
-## Add or edit a blog post
+## Blog archive
 
-Blog posts are Markdown files in `blogs/`. The filename determines the URL:
-`blogs/sorting-algorithms.md` is available at `/blogs/sorting-algorithms`.
-
-Create a file such as `blogs/my-new-post.md` with metadata followed by Markdown:
-
-```markdown
----
-title: "My New Post"
-cover: "/code.png"
-category: "Development"
-date: "2026-10-16"
-readingTime: 5
----
-
-# My New Post
-
-Write the article here.
-```
-
-Use `YYYY-MM-DD` dates and a number of minutes for `readingTime`. Put images in
-`public/` and reference them with paths such as `/code.png`. If omitted, the cover
-defaults to `/code.png` and the reading time is estimated from the article length.
-
-The homepage and `/blogs` list posts with the newest dates first. Blog detail pages
-render the Markdown content; unknown filenames return 404. `/api/blogs` returns
-local post metadata as `{ "posts": [...] }`. No external service or credentials
-are needed. Rebuild the production site after adding or editing posts.
+The original Markdown posts remain in `blogs/`. They are not displayed on the
+homepage. `/api/blogs` still returns their metadata as `{ "posts": [...] }`, sorted
+by date. Known article URLs redirect to the homepage; unknown filenames return 404.
+Keep the cover images in `public/`, since the API references them. Rebuild the
+production site after editing the archive.
 
 ## Check and build
 
