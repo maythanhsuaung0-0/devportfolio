@@ -2,8 +2,6 @@
 
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
-const STORAGE_KEY = "portfolio-color-theme";
-
 const SHARED_COLOR_VARIABLES = {
   "--transparent": "transparent",
   "--mask-opaque": "#000000",
@@ -62,22 +60,8 @@ const COLOR_THEMES = {
 
 const ThemeContext = createContext(null);
 
-function preferredTheme() {
-  try {
-    const savedTheme = window.localStorage.getItem(STORAGE_KEY);
-    if (savedTheme in COLOR_THEMES) return savedTheme;
-  } catch {
-    // Storage can be unavailable in strict privacy modes; system preference is enough.
-  }
-
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "night"
-    : "day";
-}
-
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState("day");
-  const [preferenceLoaded, setPreferenceLoaded] = useState(false);
   const palette = COLOR_THEMES[theme];
   const variables = useMemo(
     () => ({ ...SHARED_COLOR_VARIABLES, ...palette.variables }),
@@ -85,19 +69,6 @@ export function ThemeProvider({ children }) {
   );
 
   useEffect(() => {
-    setTheme(preferredTheme());
-    setPreferenceLoaded(true);
-  }, []);
-
-  useEffect(() => {
-    if (!preferenceLoaded) return;
-
-    try {
-      window.localStorage.setItem(STORAGE_KEY, theme);
-    } catch {
-      // The selected theme still works for this visit without persistence.
-    }
-
     document.documentElement.dataset.theme = theme;
     document.documentElement.style.colorScheme = palette.colorScheme;
     Object.entries(variables).forEach(([name, value]) => {
@@ -111,7 +82,7 @@ export function ThemeProvider({ children }) {
       document.head.appendChild(themeColor);
     }
     themeColor.content = palette.variables["--paper"];
-  }, [palette, preferenceLoaded, theme, variables]);
+  }, [palette, theme, variables]);
 
   const value = useMemo(
     () => ({
