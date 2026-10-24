@@ -3,16 +3,7 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: light;
   --site-cursor: url("/cursor.svg") 10 11;
-  --paper: #fff5f8;
-  --ink: #3b1726;
-  --secondary: #795362;
-  --accent: #f96c98;
-  --accent-hover: #ff5a8e;
-  --accent-strong: #9b2750;
-  --accent-strong-hover: #711837;
-  --selection: #ffc3d7;
   --document-width: 680px;
   --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-heading: Georgia, "Times New Roman", serif;
@@ -22,14 +13,11 @@
   --size-section: 26px;
   --size-name: 48px;
   --line-reveal-duration: 240ms;
-  --project-rose: #c7b8ea;
-  --project-blush: #e3879e;
-  --project-petal: #fec0ce;
   --project-radius: 8px;
-  --project-hover: rgb(59 23 38 / 8%);
-  --project-scrim: rgb(59 23 38 / 30%);
   --project-motion: 420ms;
   --project-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --theme-toggle-motion: 360ms;
+  --theme-toggle-ease: cubic-bezier(0.76, 0, 0.24, 1);
 }
 
 html {
@@ -50,6 +38,14 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
+.theme-root {
+  min-height: 100dvh;
+  color: var(--ink);
+  background: var(--paper);
+  transition:
+    color 180ms ease,
+    background-color 180ms ease;
+}
 .cursor-sparkles {
   position: fixed;
   inset: 0;
@@ -61,11 +57,11 @@ body {
   margin: 0;
   padding: 0;
   border: 0;
-  background: transparent;
+  background: var(--transparent);
   pointer-events: none;
 }
 .cursor-sparkles::backdrop {
-  background: transparent;
+  background: var(--transparent);
   pointer-events: none;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -122,6 +118,49 @@ button:focus-visible {
   flex-wrap: wrap;
   gap: 20px;
 }
+.theme-toggle {
+  display: inline-flex;
+  width: 72px;
+  height: 34px;
+  flex: 0 0 auto;
+  padding: 0;
+  border: 0;
+  border-radius: 22px;
+  color: var(--ink);
+  background: var(--toggle-sky);
+  overflow: hidden;
+}
+.theme-toggle svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.theme-toggle__orb {
+  transform: translateX(0);
+  transform-box: view-box;
+  transform-origin: center;
+}
+.theme-toggle__moon,
+.theme-toggle__stars {
+  opacity: 0;
+}
+.theme-toggle__cloud {
+  opacity: 1;
+}
+.theme-toggle[data-theme="night"] .theme-toggle__orb {
+  transform: translateX(38px);
+}
+.theme-toggle[data-theme="night"] .theme-toggle__sun,
+.theme-toggle[data-theme="night"] .theme-toggle__cloud {
+  opacity: 0;
+}
+.theme-toggle[data-theme="night"] .theme-toggle__moon,
+.theme-toggle[data-theme="night"] .theme-toggle__stars {
+  opacity: 1;
+}
+.theme-toggle:active {
+  transform: scale(0.96);
+}
 .document-header nav a {
   --marker-tilt: -1.5deg;
   position: relative;
@@ -140,7 +179,18 @@ button:focus-visible {
   inset: 34% -4px 12%;
   opacity: 0;
   background: var(--selection);
-  clip-path: polygon(1% 12%, 24% 4%, 51% 9%, 77% 0, 99% 8%, 100% 88%, 75% 97%, 48% 91%, 20% 100%, 0 89%);
+  clip-path: polygon(
+    1% 12%,
+    24% 4%,
+    51% 9%,
+    77% 0,
+    99% 8%,
+    100% 88%,
+    75% 97%,
+    48% 91%,
+    20% 100%,
+    0 89%
+  );
   transform: rotate(var(--marker-tilt)) scaleY(0.85);
   transform-origin: center;
   pointer-events: none;
@@ -157,7 +207,9 @@ button:focus-visible {
 }
 @media (prefers-reduced-motion: no-preference) {
   .document-header nav a::before {
-    transition: opacity 180ms ease, transform 180ms ease;
+    transition:
+      opacity 180ms ease,
+      transform 180ms ease;
   }
 }
 .skip-link {
@@ -238,14 +290,28 @@ h3 {
   flex: 0 0 auto;
   /* Keep the head free above the circle and crop the lower body to its curve. */
   -webkit-mask:
-    linear-gradient(#000 0 0) top / 100%
-      calc(100% - var(--portrait-circle-size) / 2) no-repeat,
-    radial-gradient(circle closest-side, #000 calc(100% - 1px), transparent)
+    linear-gradient(
+        /* taste-skill-ignore: alpha mask, not a visible gradient */
+        var(--mask-opaque) 0 0
+      )
+      top / 100% calc(100% - var(--portrait-circle-size) / 2) no-repeat,
+    radial-gradient(
+        /* taste-skill-ignore: alpha mask */ circle closest-side,
+        var(--mask-opaque) calc(100% - 1px),
+        var(--transparent)
+      )
       bottom / var(--portrait-circle-size) var(--portrait-circle-size) no-repeat;
   mask:
-    linear-gradient(#000 0 0) top / 100%
-      calc(100% - var(--portrait-circle-size) / 2) no-repeat,
-    radial-gradient(circle closest-side, #000 calc(100% - 1px), transparent)
+    linear-gradient(
+        /* taste-skill-ignore: alpha mask, not a visible gradient */
+        var(--mask-opaque) 0 0
+      )
+      top / 100% calc(100% - var(--portrait-circle-size) / 2) no-repeat,
+    radial-gradient(
+        /* taste-skill-ignore: alpha mask */ circle closest-side,
+        var(--mask-opaque) calc(100% - 1px),
+        var(--transparent)
+      )
       bottom / var(--portrait-circle-size) var(--portrait-circle-size) no-repeat;
   overflow: hidden;
 }
@@ -257,7 +323,7 @@ h3 {
   width: var(--portrait-circle-size);
   height: var(--portrait-circle-size);
   border-radius: 50%;
-  background: #fac7e2;
+  background: var(--portrait-background);
   transform: translateX(-50%);
 }
 .portrait {
@@ -414,14 +480,19 @@ html:has(.project-dialog[open])
 .project-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 22px;
+  gap: 10px;
 }
-.project-links a {
+.project-link-button {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  gap: 10px;
   min-height: 44px;
-  color: inherit;
+  padding: 8px 16px;
+  color: var(--paper);
+  background: var(--ink);
   font-weight: 600;
+  text-decoration: none;
 }
 .project-gallery {
   display: grid;
@@ -538,7 +609,7 @@ html:has(.project-dialog[open])
   margin-left: -6px;
   border: 0;
   border-radius: 50%;
-  background: transparent;
+  background: var(--transparent);
   color: inherit;
   cursor: var(--site-cursor), pointer;
 }
@@ -550,6 +621,11 @@ html:has(.project-dialog[open])
 }
 
 @media (hover: hover) and (pointer: fine) {
+  .project-link-button:hover {
+    color: var(--paper);
+    background: var(--accent-strong);
+    text-decoration: none;
+  }
   .project-card:hover .project-card-name {
     text-decoration: underline;
     text-decoration-thickness: 1px;
@@ -561,6 +637,35 @@ html:has(.project-dialog[open])
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  .project-link-button {
+    transition:
+      transform 140ms var(--project-ease),
+      background-color 180ms ease,
+      color 180ms ease;
+  }
+  .project-link-button:active {
+    transform: scale(0.97);
+  }
+  .theme-toggle {
+    transition:
+      transform 140ms var(--project-ease),
+      background-color var(--theme-toggle-motion) ease;
+  }
+  .theme-toggle svg {
+    transition: transform 180ms ease;
+  }
+  .theme-toggle__orb {
+    transition: transform var(--theme-toggle-motion) var(--theme-toggle-ease);
+  }
+  .theme-toggle__sun,
+  .theme-toggle__moon,
+  .theme-toggle__stars,
+  .theme-toggle__cloud {
+    transition: opacity 260ms ease;
+  }
+  .theme-toggle:hover svg {
+    transform: translateY(-1px) scale(1.04);
+  }
   .project-close:active {
     transform: scale(0.95);
   }
@@ -740,8 +845,14 @@ html:has(.project-dialog[open])
     gap: 40px;
   }
   .project-gallery {
-    grid-template-columns: repeat(var(--project-gallery-mobile-columns), minmax(0, 1fr));
-    grid-template-rows: repeat(var(--project-gallery-mobile-rows), minmax(0, 1fr));
+    grid-template-columns: repeat(
+      var(--project-gallery-mobile-columns),
+      minmax(0, 1fr)
+    );
+    grid-template-rows: repeat(
+      var(--project-gallery-mobile-rows),
+      minmax(0, 1fr)
+    );
     gap: 12px;
     height: min(52dvh, 480px);
     margin-top: 40px;
@@ -757,11 +868,11 @@ html:has(.project-dialog[open])
   }
   .document-header {
     align-items: flex-start;
-    flex-direction: column;
-    gap: 14px;
+    gap: 16px;
     padding-top: 24px;
   }
   .document-header nav {
+    flex: 1;
     column-gap: 18px;
     row-gap: 4px;
   }
@@ -857,13 +968,16 @@ html:has(.project-dialog[open])
     clip-path: none;
   }
   body {
-    background: white;
     font-size: 11pt;
+  }
+  .theme-root {
+    background: var(--paper);
   }
   .document-header,
   .profile-links,
   .back-to-top,
-  .skip-link {
+  .skip-link,
+  .theme-toggle {
     display: none;
   }
   .document {

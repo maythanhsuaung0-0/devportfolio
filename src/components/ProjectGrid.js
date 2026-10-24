@@ -20,13 +20,21 @@ function ProjectTools({ tools = [] }) {
 }
 
 function ProjectLinks({ links = [] }) {
-  if (!links.length) return null;
+  const availableLinks = links.filter(link => link.url);
+  if (!availableLinks.length) return null;
 
   return (
     <div className="project-links" aria-label="Project links">
-      {links.filter(link => link.url).map((link, index) => (
-        <a href={link.url} target="_blank" rel="noreferrer" key={link.id ?? `${link.url}-${index}`}>
-          {link.label || "View project"} <span aria-hidden="true">↗</span>
+      {availableLinks.map((link, index) => (
+        <a
+          className="project-link-button"
+          href={link.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          key={link.id ?? `${link.url}-${index}`}
+        >
+          {link.label || "Visit project"}
+          <span aria-hidden="true">↗</span>
         </a>
       ))}
     </div>

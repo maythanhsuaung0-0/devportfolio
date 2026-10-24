@@ -2,10 +2,12 @@
 
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
+import { useTheme } from "./ThemeProvider";
 
 export default function CursorSparkles() {
   const canvasRef = useRef(null);
   const pathname = usePathname();
+  const { theme } = useTheme();
 
   useEffect(() => {
     if (pathname.startsWith("/studio")) return;
@@ -22,7 +24,7 @@ export default function CursorSparkles() {
     let step = 0;
     let width = 0;
     let height = 0;
-    const styles = getComputedStyle(document.documentElement);
+    const styles = getComputedStyle(document.querySelector(".theme-root"));
     const colors = [
       styles.getPropertyValue("--accent").trim(),
       styles.getPropertyValue("--project-rose").trim(),
@@ -162,7 +164,7 @@ export default function CursorSparkles() {
       motion.removeEventListener("change", raise);
       pointer.removeEventListener("change", raise);
     };
-  }, [pathname]);
+  }, [pathname, theme]);
 
   return (
     <canvas
