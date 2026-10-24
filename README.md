@@ -1,24 +1,86 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Developer portfolio
+
+A single-page Next.js portfolio with Sanity-managed data and a local Markdown archive.
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies and start the development server:
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Use Node.js 22.12 or later. Edit `src/app/page.js` to update the homepage.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Configure Sanity portfolio data
+
+1. Create or select a project at [Sanity Manage](https://www.sanity.io/manage)
+   and note its project ID and dataset name.
+2. Create `.env.local` and set `NEXT_PUBLIC_SANITY_PROJECT_ID`
+   and `NEXT_PUBLIC_SANITY_DATASET`. A public dataset does not need a token.
+   For a private dataset, set `SANITY_API_READ_TOKEN` to a Viewer token.
+3. In the Sanity project's API settings, add `http://localhost:3000` as a CORS
+   origin with credentials allowed. Add the production website origin when deploying.
+4. Run `npm run dev` and open [Studio](http://localhost:3000/studio). Sign in to
+   Sanity, and choose **About me**, **Skills & tools**, **Work Experience**, **Education**, or
+   **Projects** in the Content menu. Click **Publish** when your changes are ready.
+   **About me** has a large plain-text field for long writing, with no character
+   limit. Leave a blank line between paragraphs; individual line breaks are also preserved.
+   **Skills & tools** has editable tag lists for Frontend, Backend, Languages,
+   Data & deployment, and Design & workflow. Type a tool and press Enter to add it.
+5. Open `/` to see your published biography, skills, projects, experience, and education. Published
+   changes are refreshed on a subsequent request after the 60-second cache expires.
+
+Set the same environment variables in your hosting provider before building the
+production app; Studio's project ID and dataset are included at build time.
+
+The Studio is embedded at `/studio`, including its nested editor routes. It uses
+one document with ID `portfolio`. Array order in Studio controls display order.
+The homepage is a single document with projects, biography, skills, experience,
+education, and contact details. Its navigation jumps to sections on the same page.
+Projects are one flat list in Studio and the frontend. They appear in a colored grid; selecting one expands it into a focused view
+with its full description, tools, links, and uploaded project photos. In Studio,
+each project accepts multiple labeled `http` or `https` links and multiple images
+with optional captions. Add alt text to describe each image for screen readers.
+Project images share a viewport-sized grid so multiple uploads remain visible together.
+Close the view or press Escape to return.
+Browsers with View Transition support animate the card between the two views.
+The old `/about` URL redirects to the About section; `/blogs` and known blog article
+URLs redirect to the homepage. `/resume` opens the resume file.
+
+`public/data.json` supplies the existing biography, skills, projects, experience, and education when
+Sanity is not configured or there is no published portfolio document. Once a
+document is published, its experience and education arrays (including intentionally
+empty ones) take precedence. Local projects remain visible until the published
+document contains at least one project. The local
+`/MayAung_resume.pdf` is used until a resume is uploaded.
+The existing biography remains visible until an About me value is published.
+An explicitly empty value clears the biography. The integration does not import
+the JSON data into Sanity. Each skills category uses its existing local list until
+that category is published; an explicitly empty array hides that category.
+The remaining homepage text and Markdown
+archive are separate from this portfolio data schema.
+
+## Blog archive
+
+The original Markdown posts remain in `blogs/`. They are not displayed on the
+homepage. `/api/blogs` still returns their metadata as `{ "posts": [...] }`, sorted
+by date. Known article URLs redirect to the homepage; unknown filenames return 404.
+Keep the cover images in `public/`, since the API references them. Rebuild the
+production site after editing the archive.
+
+## Check and build
+
+```bash
+npm run lint
+npm run build
+npm start
+```
+
+`npm start` serves the production build and requires `npm run build` first.
 
 ## Learn More
 

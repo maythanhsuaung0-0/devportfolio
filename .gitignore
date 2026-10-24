@@ -8,10 +8,12 @@
 
 # testing
 /coverage
+/.taste-skill/
 
 # next.js
 /.next/
 /out/
+/.sanity/
 
 # production
 /build
@@ -34,7 +36,6 @@ yarn-error.log*
 .env
 /.env
 .env.local
-.env.example
 # typescript
 *.tsbuildinfo
 next-env.d.ts

@@ -1,4 +1,12 @@
 {
+  "aboutMe": "I started coding after high school and have been learning and building ever since. I enjoy solving complex problems and turning designs into responsive, visually thoughtful websites.\n\nMy early experience includes an internship at THtwin Innovation Lab and frontend development at Nawphire. I've built RESTful APIs, worked with relational databases, and deployed applications with Heroku and Vercel.\n\nI'm currently building projects in TypeScript and learning Rust to deepen my understanding of systems programming. Away from the keyboard, I play chess to sharpen my problem-solving and rational thinking.",
+  "skills": {
+    "frontend": ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Vue.js", "Tailwind CSS", "Material UI", "Redux", "React Query"],
+    "backend": ["Node.js", "Express.js", "Python", "Flask"],
+    "languages": ["C++", "Java", "C#", "Rust (learning)"],
+    "dataAndDeployment": ["MySQL", "PostgreSQL", "AWS S3", "Heroku", "Vercel"],
+    "designAndWorkflow": ["Figma", "Git", "GitHub"]
+  },
   "education": [
     {
       "id": 1,
@@ -43,45 +51,53 @@
       ]
     }
   ],
-  "projects": {
-    "school": [
-      {
-        "id": 1,
-        "name": "Nanyang Polytechnic, Singapore",
-        "projectName": "Eviday Community Centers' Course Platform",
-        "year": "2024",
-        "tools": [
-          "JavaScript",
-          "Node.js",
-          "React.js",
-          "Vue.js",
-          "Material UI",
-          "MySQL",
-          "AWS S3",
-          "GitHub",
-          "Git"
-        ],
-        "details": "Implemented the reward management system for customer service staff and users. Developed reusable components and optimized the development workflow."
-      }
-    ],
-    "work": [
-      {
-        "id": 1,
-        "name": "Nawphire Company, Mandalay, Myanmar",
-        "projectName": "Pohmal Delivery Website (Admin Panel)",
-        "year": "2022",
-        "tools": ["JavaScript", "React.js", "Material UI", "GitHub", "Git"],
-        "details": "Developed admin dashboard features and optimized UI/UX for seamless performance."
-      },
-      {
-        "id": 2,
-        "name": "Nawphire Company, Mandalay, Myanmar",
-        "projectName": "Ngwe San Young Sugarcane Factory's Sales Management Dashboard",
-        "year": "2020",
-        "tools": ["JavaScript", "React.js", "Material UI", "CSS", "GitHub", "Git"],
-        "details": "Developed sugarcane management database pages, collaborating closely with backend teams."
-      }
-    ]
-  }
+  "projects": [
+    {
+      "id": 1,
+      "name": "Nanyang Polytechnic, Singapore",
+      "projectName": "Eviday Community Centers' Course Platform",
+      "year": "2024",
+      "tools": [
+        "JavaScript",
+        "Node.js",
+        "React.js",
+        "Vue.js",
+        "Material UI",
+        "MySQL",
+        "AWS S3",
+        "GitHub",
+        "Git"
+      ],
+      "details": "Implemented the reward management system for customer service staff and users. Developed reusable components and optimized the development workflow."
+    },
+    {
+      "id": 2,
+      "name": "Nawphire Company, Mandalay, Myanmar",
+      "projectName": "Pohmal Delivery Website (Admin Panel)",
+      "year": "2022",
+      "tools": [
+        "JavaScript",
+        "React.js",
+        "Material UI",
+        "GitHub",
+        "Git"
+      ],
+      "details": "Developed admin dashboard features and optimized UI/UX for seamless performance."
+    },
+    {
+      "id": 3,
+      "name": "Nawphire Company, Mandalay, Myanmar",
+      "projectName": "Ngwe San Young Sugarcane Factory's Sales Management Dashboard",
+      "year": "2020",
+      "tools": [
+        "JavaScript",
+        "React.js",
+        "Material UI",
+        "CSS",
+        "GitHub",
+        "Git"
+      ],
+      "details": "Developed sugarcane management database pages, collaborating closely with backend teams."
+    }
+  ]
 }
-
